@@ -7,7 +7,6 @@ import confetti from 'canvas-confetti';
 interface Stage5CertificationProps {
   student: StudentProfile;
   scores: CompetencyScore;
-  totalScore: number;
   conflictRecords?: ConflictRecord[];
   journal?: ReflectionJournal;
   onOpenJournalModal?: () => void;
@@ -18,7 +17,6 @@ interface Stage5CertificationProps {
 export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
   student,
   scores,
-  totalScore,
   conflictRecords = [],
   journal = {},
   onOpenJournalModal,
@@ -58,7 +56,6 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
 ====================================
 학생: 중학교 ${grade}학년 ${classNum}반 ${student.studentNumber}번 ${student.name}
 수업 전 감정: ${student.initialEmotion} (에너지: ${student.initialEnergy}/5)
-총 획득 경험치: ${totalScore} EXP (어울림 등급: ${totalScore >= 180 ? 'GRADE S (어울림 마스터)' : 'GRADE A (어울림 수호자)'})
 
 [어울림 5대 역량 점수]
 - 공감 역량: ${scores.empathy}점
@@ -217,18 +214,8 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
 
             <div className="bg-slate-50/60 print:bg-slate-50 p-4 rounded-xl border border-slate-100 print:border-slate-200 space-y-1.5 text-xs">
               <div className="flex justify-between text-slate-600 print:text-slate-700">
-                <span>총 획득 존중 경험치:</span>
-                <span className="font-extrabold text-amber-600 print:text-amber-800">{totalScore} EXP</span>
-              </div>
-              <div className="flex justify-between text-slate-600 print:text-slate-700">
                 <span>수업 전 감정 배터리:</span>
                 <span className="font-semibold text-sky-600 print:text-sky-800">{student.initialEmotion}</span>
-              </div>
-              <div className="flex justify-between text-slate-600 print:text-slate-700">
-                <span>어울림 등급:</span>
-                <span className="font-extrabold text-emerald-600 print:text-emerald-800">
-                  {totalScore >= 180 ? 'GRADE S (마스터)' : 'GRADE A (수호자)'}
-                </span>
               </div>
             </div>
           </div>

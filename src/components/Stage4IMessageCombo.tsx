@@ -271,7 +271,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 </span>
               </div>
               <span className="text-xs font-mono bg-white/70 px-2.5 py-1 rounded">
-                {comboResult === 'success' ? '+35 EXP 획득' : '카드 재조합 필요'}
+                {comboResult === 'success' ? '의사소통 역량 +35' : '카드 재조합 필요'}
               </span>
             </div>
 

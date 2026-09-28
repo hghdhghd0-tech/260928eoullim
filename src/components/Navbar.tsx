@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Clock, Award, BookOpen, User, RotateCcw, HelpCircle, Shield, Lock } from 'lucide-react';
+import { Volume2, VolumeX, Clock, BookOpen, User, RotateCcw, HelpCircle, Shield, Lock } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { StudentProfile } from '../types';
 
@@ -10,7 +10,6 @@ export const displayName = (student: StudentProfile) =>
 interface NavbarProps {
   currentStage: string;
   student: StudentProfile | null;
-  totalScore: number;
   journalCount: number;
   onOpenTeacherModal: () => void;
   onOpenGuideModal: () => void;
@@ -20,7 +19,6 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({
   student,
-  totalScore,
   journalCount,
   onOpenTeacherModal,
   onOpenGuideModal,
@@ -107,13 +105,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </div>
           )}
-
-          {/* Respect EXP Score */}
-          <div className="flex items-center gap-1.5 h-11 px-3 rounded-full bg-amber-50 text-xs font-bold text-amber-700 whitespace-nowrap shrink-0">
-            <Award className="w-3.5 h-3.5" />
-            <span className="font-mono text-[13px]">{totalScore}</span>
-            <span className="text-xs text-amber-600/70">EXP</span>
-          </div>
         </div>
 
         {/* Right Tools: Reflection Journal, Student Guide, Mute, Teacher Toolkit, Reset */}

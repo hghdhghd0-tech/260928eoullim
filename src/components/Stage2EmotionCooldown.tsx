@@ -238,7 +238,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
             ) : (
               <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4" />
-                <span>침착성 +25 EXP 획득! 편도체 쿨다운 완료</span>
+                <span>편도체 쿨다운 완료! 감정조절 역량이 올라갔어요</span>
               </div>
             )}
             <p className="text-xs text-slate-500">
@@ -332,7 +332,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                   알아차리는 것이 감정조절의 첫걸음입니다.
                 </p>
                 <div className="text-amber-600 font-bold text-sm">
-                  획득 감정 점수: +{quizScore} EXP
+                  감정조절 역량 +{quizScore}
                 </div>
               </div>
             )}

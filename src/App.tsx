@@ -36,7 +36,6 @@ export default function App() {
     self_esteem: 20,
     conflict_resolution: 20
   });
-  const [totalScore, setTotalScore] = useState<number>(100);
   // 가장 멀리 진행한 단계. 이미 끝낸 단계를 다시 해도 점수가 두 번 쌓이지 않도록 사용
   const [maxStageIndex, setMaxStageIndex] = useState<number>(0);
   // 공용 태블릿에서 이전 학생 기록이 남아 있을 때 이어하기/새로 시작을 묻는 창
@@ -58,7 +57,6 @@ export default function App() {
       if (savedScores) {
         const parsed = JSON.parse(savedScores);
         setScores(parsed.scores);
-        setTotalScore(parsed.totalScore);
       }
       if (savedConflicts) setConflictRecords(JSON.parse(savedConflicts));
       if (savedJournal) setJournal(JSON.parse(savedJournal));
@@ -76,7 +74,7 @@ export default function App() {
   useEffect(() => {
     try {
       if (student) localStorage.setItem('eoullim_student', JSON.stringify(student));
-      localStorage.setItem('eoullim_scores', JSON.stringify({ scores, totalScore }));
+      localStorage.setItem('eoullim_scores', JSON.stringify({ scores }));
       localStorage.setItem('eoullim_conflicts', JSON.stringify(conflictRecords));
       localStorage.setItem('eoullim_journal', JSON.stringify(journal));
       localStorage.setItem('eoullim_stage', stage);
@@ -84,7 +82,7 @@ export default function App() {
     } catch {
       // ignore
     }
-  }, [student, scores, totalScore, conflictRecords, journal, stage, maxStageIndex]);
+  }, [student, scores, conflictRecords, journal, stage, maxStageIndex]);
 
   // 단계를 처음 끝냈을 때만 true. 다음 단계까지 열어 줌
   const completeStage = (next: GameStage) => {
@@ -103,7 +101,6 @@ export default function App() {
         ...prev,
         self_esteem: prev.self_esteem + CHECK_IN_BONUS
       }));
-      setTotalScore((prev) => prev + CHECK_IN_BONUS);
     }
   };
 
@@ -113,7 +110,6 @@ export default function App() {
       ...prev,
       self_regulation: prev.self_regulation + scoreGain
     }));
-    setTotalScore((prev) => prev + scoreGain);
   };
 
   const handleStage3Complete = (bonus: Partial<CompetencyScore>, records: ConflictRecord[]) => {
@@ -121,14 +117,11 @@ export default function App() {
     setConflictRecords(records);
     setScores((prev) => {
       const next = { ...prev };
-      let added = 0;
       Object.entries(bonus).forEach(([k, v]) => {
         if (v !== undefined) {
           next[k as keyof CompetencyScore] = (next[k as keyof CompetencyScore] || 0) + v;
-          added += v;
         }
       });
-      setTotalScore((t) => t + added);
       return next;
     });
   };
@@ -139,7 +132,6 @@ export default function App() {
       ...prev,
       communication: prev.communication + scoreGain
     }));
-    setTotalScore((prev) => prev + scoreGain);
   };
 
   const handleUpdatePledge = (pledge: string) => {
@@ -162,7 +154,6 @@ export default function App() {
       self_esteem: 20,
       conflict_resolution: 20
     });
-    setTotalScore(100);
   };
 
   const handleReset = () => {
@@ -179,7 +170,6 @@ export default function App() {
       <Navbar
         currentStage={stage}
         student={student}
-        totalScore={totalScore}
         journalCount={journalCount}
         onOpenTeacherModal={() => setIsTeacherModalOpen(true)}
         onOpenGuideModal={() => setIsGuideModalOpen(true)}
@@ -265,7 +255,6 @@ export default function App() {
           <Stage5Certification
             student={student}
             scores={scores}
-            totalScore={totalScore}
             conflictRecords={conflictRecords}
             journal={journal}
             onOpenJournalModal={() => {
