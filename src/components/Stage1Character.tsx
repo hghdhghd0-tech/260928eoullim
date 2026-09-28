@@ -45,8 +45,8 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
           <Sparkles className="w-3.5 h-3.5" />
           <span>도입 5분 : 학년·반·번호 확인 & 감정 배터리 측정</span>
         </div>
-        <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-          상호존중 어울림 퀘스트, <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-rose-400 to-indigo-400">참여 학생 설정</span>
+        <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">
+          상호존중 어울림 퀘스트, <span className="text-amber-400">참여 학생 설정</span>
         </h1>
         <p className="text-sm text-slate-300 max-w-xl mx-auto">
           우리 반 동료들과 함께하는 1차시 어울림 실천 수업입니다.
@@ -81,7 +81,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
                   }}
                   className={`h-11 rounded-xl font-bold text-sm transition-all flex items-center justify-center ${
                     grade === g
-                      ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-md shadow-sky-500/30 ring-2 ring-sky-300 scale-105'
+                      ? 'bg-amber-400 text-slate-950 font-black ring-2 ring-amber-300/40'
                       : 'bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -108,7 +108,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
                   }}
                   className={`h-11 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${
                     classNum === c
-                      ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/30 ring-2 ring-amber-300 scale-105'
+                      ? 'bg-amber-400 text-slate-950 font-black ring-2 ring-amber-300/40'
                       : 'bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -141,7 +141,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
                 }}
                 className={`h-10 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${
                   selectedNum === num
-                    ? 'bg-gradient-to-r from-indigo-500 to-sky-500 text-white shadow-lg shadow-indigo-500/30 scale-105 ring-2 ring-indigo-300'
+                    ? 'bg-amber-400 text-slate-950 font-black ring-2 ring-amber-300/40'
                     : 'bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200'
                 }`}
               >
@@ -164,7 +164,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
               onChange={(e) => setName(e.target.value)}
               placeholder={`예: ${grade}학년 ${classNum}반 ${selectedNum}번 (또는 본인 이름 입력)`}
               maxLength={12}
-              className="w-full px-4 py-3.5 bg-slate-950/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-medium text-sm transition"
+              className="w-full px-4 py-3.5 bg-slate-950/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 font-medium text-sm transition"
             />
           </div>
           <p className="text-[11px] text-slate-500 mt-1 pl-1">
@@ -198,7 +198,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
                   }}
                   className={`p-3 rounded-2xl text-left border transition-all flex items-center gap-3 ${
                     isSelected
-                      ? `${item.color} ring-2 ring-indigo-400 shadow-md scale-[1.02]`
+                      ? `${item.color} ring-2 ring-amber-400/70 shadow-md`
                       : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-300'
                   }`}
                 >
@@ -224,7 +224,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
         <div className="pt-2">
           <button
             onClick={handleStart}
-            className="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-rose-500 to-indigo-600 hover:from-amber-400 hover:via-rose-400 hover:to-indigo-500 text-white font-extrabold text-base md:text-lg shadow-xl shadow-rose-500/25 flex items-center justify-center gap-2 transform active:scale-98 transition"
+            className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-base md:text-lg shadow-xl shadow-black/40 flex items-center justify-center gap-2 transform active:scale-98 transition"
           >
             <Shield className="w-5 h-5" />
             <span>[{grade}학년 {classNum}반] 어울림 퀘스트 시작하기 (45분)</span>

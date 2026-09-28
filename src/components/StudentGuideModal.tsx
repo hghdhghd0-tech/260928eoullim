@@ -50,9 +50,9 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-slate-900 border-2 border-indigo-500/50 w-full max-w-3xl rounded-3xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-slate-900 border border-white/10 w-full max-w-3xl rounded-3xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="p-4 sm:p-5 bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 border-b border-slate-800 flex items-center justify-between shrink-0">
+        <div className="p-4 sm:p-5 bg-slate-950/60 border-b border-white/[0.06] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-black shadow">
               <HelpCircle className="w-6 h-6" />
@@ -87,7 +87,7 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
         {/* Content Body */}
         <div className="p-5 sm:p-6 overflow-y-auto space-y-4">
           {/* Quick 3 Rule Alert */}
-          <div className="bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-indigo-500/15 p-4 rounded-2xl border border-amber-500/30 space-y-2">
+          <div className="bg-amber-500/15 p-4 rounded-2xl border border-amber-500/30 space-y-2">
             <span className="text-xs font-black text-amber-300 flex items-center gap-1.5 uppercase">
               <Sparkles className="w-4 h-4" />
               💡 이것만 알면 끝나는 3가지 꿀팁!
@@ -144,9 +144,9 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
               sound.playSuccess();
               onClose();
             }}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white font-extrabold text-xs shadow flex items-center justify-center gap-2 transition active:scale-95"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs shadow flex items-center justify-center gap-2 transition active:scale-95"
           >
-            <Play className="w-4 h-4 fill-white" />
+            <Play className="w-4 h-4 fill-slate-950" />
             <span>이해했어요! 수업 시작하기</span>
             <ArrowRight className="w-4 h-4" />
           </button>

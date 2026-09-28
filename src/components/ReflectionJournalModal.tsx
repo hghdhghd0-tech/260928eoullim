@@ -151,11 +151,11 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-slate-900 border-2 border-indigo-500/50 w-full max-w-3xl rounded-3xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-slate-900 border border-white/10 w-full max-w-3xl rounded-3xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Modal Header */}
-        <div className="p-4 sm:p-5 bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 border-b border-slate-800 flex items-center justify-between shrink-0">
+        <div className="p-4 sm:p-5 bg-slate-950/60 border-b border-white/[0.06] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-sky-500 flex items-center justify-center text-white shadow">
+            <div className="w-10 h-10 rounded-xl bg-indigo-500 flex items-center justify-center text-white shadow">
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
@@ -197,7 +197,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
                 }}
                 className={`flex-1 min-w-[130px] px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-between gap-1.5 border ${
                   isActive
-                    ? 'bg-indigo-600 text-white border-indigo-400 shadow-md shadow-indigo-600/30'
+                    ? 'bg-indigo-600 text-white border-indigo-400 shadow-md shadow-black/40'
                     : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-slate-200'
                 }`}
               >
@@ -206,7 +206,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
                   <span className="truncate">{st.stageNum}</span>
                 </div>
                 {isFilled ? (
-                  <span className="w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] shrink-0 font-bold">
+                  <span className="w-4 h-4 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center text-[10px] shrink-0 font-bold">
                     ✓
                   </span>
                 ) : (
@@ -299,7 +299,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
             <button
               type="button"
               onClick={handleSaveAndClose}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-sky-600 hover:from-indigo-500 hover:to-sky-500 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-indigo-600/30 flex items-center gap-1.5 transition active:scale-95"
+              className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-black/40 flex items-center gap-1.5 transition active:scale-95"
             >
               {showSavedToast ? <Check className="w-4 h-4 text-emerald-300" /> : <Save className="w-4 h-4" />}
               <span>{showSavedToast ? '저장 완료!' : '성찰 일지 저장'}</span>

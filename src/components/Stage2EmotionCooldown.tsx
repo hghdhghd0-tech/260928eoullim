@@ -138,7 +138,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
           <ShieldAlert className="w-3.5 h-3.5" />
           <span>전개 1 (10분) : 감정조절 6초 쿨다운 아레나</span>
         </div>
-        <h2 className="text-2xl md:text-3xl font-black text-white">
+        <h2 className="text-3xl md:text-4xl font-black text-white">
           욱하는 순간, <span className="text-amber-400">뇌의 6초 법칙</span>을 지배하라!
         </h2>
         <p className="text-sm text-slate-300 max-w-xl mx-auto">
@@ -173,7 +173,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
             <div
               className={`w-44 h-44 rounded-full flex items-center justify-center transition-all duration-1000 ${
                 breathePhase === 'inhale'
-                  ? 'scale-125 bg-sky-500/20 shadow-2xl shadow-sky-500/40 ring-4 ring-sky-400/50'
+                  ? 'scale-125 bg-sky-500/20 shadow-2xl shadow-black/40 ring-4 ring-sky-400/50'
                   : breathePhase === 'hold'
                   ? 'scale-125 bg-amber-500/25 ring-4 ring-amber-400/60'
                   : breathePhase === 'exhale'
@@ -185,11 +185,11 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
               <div
                 className={`w-32 h-32 rounded-full flex flex-col items-center justify-center text-white transition-all duration-700 ${
                   breathePhase === 'inhale'
-                    ? 'bg-gradient-to-tr from-sky-600 to-cyan-500'
+                    ? 'bg-sky-600'
                     : breathePhase === 'hold'
-                    ? 'bg-gradient-to-tr from-amber-600 to-yellow-500'
+                    ? 'bg-amber-600'
                     : breathePhase === 'exhale'
-                    ? 'bg-gradient-to-tr from-indigo-600 to-purple-600'
+                    ? 'bg-indigo-600'
                     : 'bg-slate-800 text-slate-400'
                 }`}
               >
@@ -357,7 +357,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
               <button
                 type="button"
                 onClick={handleFinishStage}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-sm shadow-lg shadow-teal-500/25 flex items-center justify-center gap-2 transform active:scale-98 transition"
+                className="w-full py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-sm shadow-lg shadow-black/40 flex items-center justify-center gap-2 transform active:scale-98 transition"
               >
                 <span>스테이지 2 클리어! 실전 RPG 퀘스트로 이동</span>
                 <ArrowRight className="w-4 h-4" />

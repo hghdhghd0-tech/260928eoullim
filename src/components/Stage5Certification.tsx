@@ -186,7 +186,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
           <div className="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 print:text-amber-800 text-xs font-black tracking-widest uppercase border border-amber-500/30">
             학교폭력예방 어울림 역량 인증
           </div>
-          <h1 className="text-2xl md:text-3xl font-black text-white print:text-black tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-black text-white print:text-black tracking-tight">
             상호존중 어울림 마스터 인증서
           </h1>
           <p className="text-xs text-slate-400 print:text-slate-600">
@@ -199,7 +199,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
           {/* Left: Student Profile & Badge */}
           <div className="md:col-span-5 space-y-4 text-center md:text-left">
             <div className="inline-flex items-center gap-3.5 p-3.5 bg-slate-950/80 print:bg-slate-100 rounded-2xl border border-slate-800 print:border-slate-300 w-full">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-indigo-600 flex items-center justify-center text-3xl shadow-lg shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-amber-500 flex items-center justify-center text-3xl shadow-lg shrink-0">
                 🏅
               </div>
               <div className="text-left">
@@ -248,7 +248,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                     cy={center}
                     r={radius * level}
                     fill="none"
-                    stroke="#334155"
+                    stroke="#2a303b"
                     strokeDasharray={level === 1 ? 'none' : '2,2'}
                     strokeWidth="1"
                     className="print:stroke-slate-300"
@@ -266,7 +266,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                       y1={center}
                       x2={x2}
                       y2={y2}
-                      stroke="#475569"
+                      stroke="#353c48"
                       strokeWidth="1"
                       className="print:stroke-slate-300"
                     />
@@ -276,8 +276,8 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                 {/* Score Polygon Area */}
                 <polygon
                   points={polygonPoints}
-                  fill="rgba(99, 102, 241, 0.35)"
-                  stroke="#818cf8"
+                  fill="rgba(207, 239, 46, 0.22)"
+                  stroke="#cfef2e"
                   strokeWidth="2.5"
                   className="print:fill-indigo-100 print:stroke-indigo-600"
                 />
@@ -291,7 +291,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                   const [lx, ly] = labelPt.split(',');
                   return (
                     <g key={c.key}>
-                      <circle cx={px} cy={py} r="4" fill="#38bdf8" className="print:fill-indigo-700" />
+                      <circle cx={px} cy={py} r="4" fill="#ddf45a" className="print:fill-indigo-700" />
                       <text
                         x={lx}
                         y={ly}
@@ -468,7 +468,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
       <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
         <button
           onClick={handleDownloadTxt}
-          className="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-emerald-500/20 flex items-center gap-2 transition active:scale-95"
+          className="px-5 py-3 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-xs sm:text-sm shadow-lg shadow-black/40 flex items-center gap-2 transition active:scale-95"
           title="태블릿에 텍스트 파일(.txt)로 활동 결과서 저장"
         >
           {isDownloaded ? <Check className="w-4 h-4" /> : <Download className="w-4 h-4" />}

@@ -66,7 +66,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
           <MessageSquareShare className="w-3.5 h-3.5" />
           <span>전개 3 (8분) : 나-전달법(I-Message) 콤보 제조기</span>
         </div>
-        <h2 className="text-2xl md:text-3xl font-black text-white">
+        <h2 className="text-3xl md:text-4xl font-black text-white">
           "너 때문에!" 대신 <span className="text-sky-400">3단 존중 스킬</span>을 장착하라!
         </h2>
         <p className="text-sm text-slate-300 max-w-xl mx-auto">
@@ -239,7 +239,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 type="button"
                 onClick={handleExecuteCombo}
                 disabled={!selectedFact || !selectedFeeling || !selectedRequest}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600 hover:from-sky-400 hover:to-purple-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-extrabold text-sm shadow-lg shadow-sky-500/25 flex items-center justify-center gap-2 transform active:scale-98 transition"
+                className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 disabled:bg-slate-800 disabled:text-slate-600 text-white font-extrabold text-sm shadow-lg shadow-black/40 flex items-center justify-center gap-2 transform active:scale-98 transition"
               >
                 <Zap className="w-4 h-4 text-amber-300" />
                 <span>나-전달법 리스펙트 콤보 스킬 발동!</span>
@@ -298,7 +298,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 <button
                   type="button"
                   onClick={handleNextProblem}
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-xs shadow flex items-center gap-1.5 transition active:scale-95"
+                  className="px-5 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-xs shadow flex items-center gap-1.5 transition active:scale-95"
                 >
                   <span>{isLastProblem ? '모든 콤보 마스터! 최종 인증서 받기' : '다음 문제 도전'}</span>
                   <ArrowRight className="w-4 h-4" />

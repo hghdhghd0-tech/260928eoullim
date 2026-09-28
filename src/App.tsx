@@ -145,7 +145,7 @@ export default function App() {
   const journalCount = Object.values(journal).filter((v) => (v || '').trim().length > 0).length;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-['Noto_Sans_KR',sans-serif]">
+    <div className="min-h-screen text-slate-100 flex flex-col">
       {/* Top Navigation */}
       <Navbar
         currentStage={stage}
@@ -162,8 +162,8 @@ export default function App() {
       />
 
       {/* Lesson Step Indicator (1차시 45분 시간표 매핑) */}
-      <div className="bg-slate-900/60 border-b border-slate-800/80 py-2.5 px-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between overflow-x-auto gap-2">
+      <div className="border-b border-white/[0.06] bg-slate-950/40 py-3 px-4">
+        <div className="max-w-5xl mx-auto grid grid-cols-5 gap-1.5">
           {STAGE_STEPS.map((step, idx) => {
             const Icon = step.icon;
             const isCurrent = stage === step.id;
@@ -182,17 +182,38 @@ export default function App() {
                   }
                 }}
                 disabled={!student && step.id !== 'character'}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs transition whitespace-nowrap ${
-                  isCurrent
-                    ? 'bg-gradient-to-r from-amber-500/20 to-indigo-500/20 border border-amber-500/40 text-amber-300 font-extrabold shadow-sm'
-                    : isPassed
-                    ? 'bg-slate-900 border border-emerald-500/30 text-emerald-400 font-semibold'
-                    : 'bg-slate-950 border border-slate-800 text-slate-500 cursor-not-allowed'
+                className={`group relative flex flex-col items-start gap-1 pt-2.5 pb-1 px-1 text-left transition min-w-0 ${
+                  !student && step.id !== 'character' ? 'cursor-not-allowed' : ''
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isCurrent ? 'text-amber-400 animate-pulse' : isPassed ? 'text-emerald-400' : 'text-slate-600'}`} />
-                <span>{step.name}</span>
-                <span className="text-[10px] text-slate-400 hidden md:inline">({step.time})</span>
+                <span
+                  className={`absolute top-0 left-0 right-0 h-1 rounded-full transition-colors ${
+                    isCurrent ? 'bg-amber-400' : isPassed ? 'bg-emerald-400/70' : 'bg-white/[0.08]'
+                  }`}
+                />
+                <span className="flex items-center gap-1.5 min-w-0 w-full">
+                  <span
+                    className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 ${
+                      isCurrent
+                        ? 'bg-amber-400 text-slate-950'
+                        : isPassed
+                        ? 'bg-emerald-400/15 text-emerald-300'
+                        : 'bg-white/[0.05] text-slate-500'
+                    }`}
+                  >
+                    <Icon className="w-3 h-3" />
+                  </span>
+                  <span
+                    className={`text-xs truncate ${
+                      isCurrent ? 'text-white font-extrabold' : isPassed ? 'text-slate-300 font-semibold' : 'text-slate-500 font-medium'
+                    }`}
+                  >
+                    {step.name}
+                  </span>
+                </span>
+                <span className={`text-[10px] pl-[26px] hidden md:block ${isCurrent ? 'text-amber-300' : 'text-slate-600'}`}>
+                  {step.time}
+                </span>
               </button>
             );
           })}
@@ -200,7 +221,7 @@ export default function App() {
       </div>
 
       {/* Main Container */}
-      <main className="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 flex flex-col justify-center">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-6 md:px-6 md:py-10 flex flex-col">
         {stage === 'character' && <Stage1Character onComplete={handleStage1Complete} />}
 
         {stage === 'cooldown' && (
@@ -243,19 +264,19 @@ export default function App() {
             setActiveJournalStage(stage);
             setIsJournalModalOpen(true);
           }}
-          className="fixed bottom-5 right-5 z-30 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-extrabold text-xs shadow-xl shadow-sky-600/30 border border-sky-400/50 flex items-center gap-2 transform active:scale-95 transition print:hidden"
+          className="fixed bottom-5 right-5 z-30 h-12 px-5 rounded-full bg-slate-800/90 hover:bg-slate-700 backdrop-blur-xl text-white font-bold text-sm shadow-2xl shadow-black/60 border border-white/10 flex items-center gap-2 transform active:scale-95 transition print:hidden"
           title="이번 단계 느낀 점 성찰 일지 쓰기"
         >
-          <BookOpen className="w-4 h-4 text-sky-200" />
+          <BookOpen className="w-4 h-4 text-sky-300" />
           <span>성찰 일지 ({journalCount}/5)</span>
         </button>
       )}
 
       {/* Bottom Footer Info */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-3 text-center text-xs text-slate-500 print:hidden">
+      <footer className="border-t border-white/[0.06] py-4 text-center text-[11px] text-slate-600 print:hidden">
         <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <Sparkles className="w-3.5 h-3.5 text-slate-500" />
             <span>(학예 1단) 수업개선 지원단 교과중심 교실수업 개선 어울림 프로그램</span>
           </div>
           <div>

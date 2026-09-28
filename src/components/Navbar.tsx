@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Clock, Award, BookOpen, User, RotateCcw, HelpCircle } from 'lucide-react';
+import { Volume2, VolumeX, Clock, Award, BookOpen, User, RotateCcw, HelpCircle, Shield, Lock } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { StudentProfile } from '../types';
 
@@ -52,41 +52,45 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
-      <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between">
+    <header className="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-xl border-b border-white/[0.06] text-white">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
         {/* App Title & Identity */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-600 flex items-center justify-center shadow-md shadow-indigo-500/20 text-xl font-black">
-            🛡️
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-9 h-9 rounded-lg bg-amber-400 flex items-center justify-center text-slate-950 shrink-0">
+            <Shield className="w-5 h-5" strokeWidth={2.5} />
           </div>
-          <div>
+          <div className="min-w-0 hidden lg:block">
             <div className="flex items-center gap-2">
-              <span className="font-extrabold text-base md:text-lg tracking-tight bg-gradient-to-r from-amber-300 via-rose-300 to-sky-300 bg-clip-text text-transparent font-['Noto_Sans_KR']">
+              <span className="font-black text-[17px] tracking-[-0.04em] text-white whitespace-nowrap">
                 어울림 마스터
               </span>
-              <span className="hidden sm:inline-block px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 rounded-full border border-indigo-500/30">
+              <span className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-slate-400 rounded border border-white/10 whitespace-nowrap">
                 중1 어울림 1차시
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 hidden md:block">
+            <p className="text-[11px] text-slate-500 hidden xl:block whitespace-nowrap">
               상호존중 교과 연계 역량 강화 게임
             </p>
           </div>
         </div>
 
         {/* Middle Stats: Student info & Lesson Timer */}
-        <div className="flex items-center gap-2 md:gap-4">
+        <div className="flex items-center gap-2 min-w-0">
           {/* 45 min lesson timer for middle school tablet class */}
-          <div className="flex items-center gap-1.5 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700 text-xs text-slate-300">
-            <Clock className="w-3.5 h-3.5 text-amber-400" />
-            <span className="font-mono font-bold text-amber-300">{formatTime(timeLeft)}</span>
+          <div className="flex items-center h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs overflow-hidden shrink-0">
+            <span className="flex items-center gap-1.5 pl-2.5 pr-2">
+              <Clock className={`w-3.5 h-3.5 ${isTimerRunning ? 'text-amber-400' : 'text-slate-500'}`} />
+              <span className="font-mono font-bold text-[13px] text-white">{formatTime(timeLeft)}</span>
+            </span>
             <button
               onClick={() => {
                 sound.playClick();
                 setIsTimerRunning(!isTimerRunning);
               }}
               title={isTimerRunning ? '수업 타이머 일시정지' : '수업 타이머 시작'}
-              className="text-[10px] px-1.5 py-0.5 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 transition"
+              className={`h-full px-2.5 text-[11px] font-bold border-l border-white/[0.08] transition ${
+                isTimerRunning ? 'text-slate-300 hover:bg-white/5' : 'text-amber-300 hover:bg-amber-400/10'
+              }`}
             >
               {isTimerRunning ? '정지' : '시작'}
             </button>
@@ -94,34 +98,35 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Student Status Badge */}
           {student && (
-            <div className="flex items-center gap-1.5 bg-gradient-to-r from-indigo-950 to-slate-800 px-2.5 py-1 rounded-lg border border-indigo-700/50 text-xs">
-              <User className="w-3.5 h-3.5 text-sky-400" />
-              <span className="font-bold text-sky-200">
+            <div className="hidden lg:flex items-center gap-1.5 h-9 px-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs min-w-0">
+              <User className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+              <span className="font-semibold text-slate-200 truncate max-w-[16rem]">
                 {student.grade || 1}-{student.classNum || 1}반 {student.studentNumber}번 {student.name}
               </span>
             </div>
           )}
 
           {/* Respect EXP Score */}
-          <div className="flex items-center gap-1 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-lg text-xs font-bold text-amber-300">
+          <div className="flex items-center gap-1.5 h-9 px-2.5 rounded-lg bg-amber-400/10 border border-amber-400/25 text-xs font-bold text-amber-300 whitespace-nowrap shrink-0">
             <Award className="w-3.5 h-3.5" />
-            <span>{totalScore} EXP</span>
+            <span className="font-mono text-[13px]">{totalScore}</span>
+            <span className="text-[10px] text-amber-400/70">EXP</span>
           </div>
         </div>
 
         {/* Right Tools: Reflection Journal, Student Guide, Mute, Teacher Toolkit, Reset */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 shrink-0">
           <button
             onClick={() => {
               sound.playClick();
               onOpenJournalModal();
             }}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-sky-700/80 hover:bg-sky-600 text-white font-bold text-xs shadow transition active:scale-95 border border-sky-400/40"
+            className="flex items-center gap-1.5 h-9 px-2.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 font-bold text-xs transition active:scale-95 border border-white/[0.08] whitespace-nowrap"
             title="수업 단계별 성찰 일지 쓰기 및 확인"
           >
             <BookOpen className="w-3.5 h-3.5 text-sky-300" />
-            <span className="hidden sm:inline">성찰 일지</span>
-            <span className="bg-sky-950 text-sky-200 text-[10px] font-black px-1.5 py-0.5 rounded-full border border-sky-400/30">
+            <span className="hidden lg:inline">성찰 일지</span>
+            <span className="font-mono text-[10px] font-black px-1.5 py-0.5 rounded bg-sky-400/15 text-sky-200">
               {journalCount}/5
             </span>
           </button>
@@ -131,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               sound.playClick();
               onOpenGuideModal();
             }}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs shadow transition active:scale-95 border border-amber-300 ring-2 ring-amber-400/30 animate-pulse"
+            className="flex items-center gap-1 h-9 px-3 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition active:scale-95 whitespace-nowrap"
             title="오늘 45분 수업 방법 보기"
           >
             <HelpCircle className="w-3.5 h-3.5" />
@@ -141,10 +146,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={toggleSound}
             aria-label={isMuted ? '음소거 해제' : '음소거'}
-            className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition border border-slate-700/60"
+            className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 hover:text-white transition border border-white/[0.08]"
             title={isMuted ? '음소거 해제' : '효과음 끄기'}
           >
-            {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
+            {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4" />}
           </button>
 
           <button
@@ -152,12 +157,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               sound.playClick();
               onOpenTeacherModal();
             }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600/90 hover:bg-indigo-500 text-white font-medium text-xs shadow transition active:scale-95 border border-indigo-400/40"
+            className="flex items-center gap-1.5 h-9 px-2.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 font-semibold text-xs transition active:scale-95 border border-white/[0.08] whitespace-nowrap"
             title="교사용 지도안 및 전교과 팁 (비밀번호 보호)"
           >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">교사용 자료실 (🔒)</span>
-            <span className="sm:hidden">교사용(🔒)</span>
+            <Lock className="w-3.5 h-3.5 text-slate-400" />
+            <span className="hidden lg:inline">교사용 자료실</span>
+            <span className="lg:hidden">교사용</span>
           </button>
 
           <button
@@ -167,7 +172,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }}
             title="처음으로 다시하기"
             aria-label="처음으로 다시하기"
-            className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition border border-slate-700/60"
+            className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-400 hover:text-white transition border border-white/[0.08]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>

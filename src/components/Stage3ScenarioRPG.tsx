@@ -79,7 +79,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
           <Swords className="w-3.5 h-3.5" />
           <span>전개 2 (15분) : 실전 갈등해결 시나리오 RPG (4대 퀘스트)</span>
         </div>
-        <h2 className="text-2xl md:text-3xl font-black text-white">
+        <h2 className="text-3xl md:text-4xl font-black text-white">
           일상의 갈등 상황, <span className="text-rose-400">당신의 선택</span>은?
         </h2>
         <p className="text-sm text-slate-300 max-w-xl mx-auto">
@@ -107,9 +107,9 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
               key={q.id}
               className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-[11px] transition ${
                 idx < questIndex
-                  ? 'bg-emerald-500 text-white shadow'
+                  ? 'bg-emerald-400 text-slate-950 shadow'
                   : idx === questIndex
-                  ? 'bg-amber-500 text-slate-950 ring-2 ring-amber-300 ring-offset-1 ring-offset-slate-900'
+                  ? 'bg-amber-400 text-slate-950 ring-2 ring-amber-300/40 ring-offset-1 ring-offset-slate-900'
                   : 'bg-slate-800 text-slate-500'
               }`}
             >
@@ -126,7 +126,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
       {/* Main RPG Scenario Card */}
       <div className="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md">
         {/* Banner with Subject & Title */}
-        <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+        <div className="bg-slate-900 px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
           <div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20 mr-2">
               {currentQuest.category}
@@ -148,7 +148,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
           </div>
 
           {/* NPC Encounter Dialogue */}
-          <div className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-rose-950/30 via-slate-900 to-slate-950 border border-rose-500/20">
+          <div className="flex items-start gap-4 p-4 rounded-xl bg-rose-950/30 border border-rose-500/20">
             <div className="w-14 h-14 rounded-2xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-3xl shrink-0 shadow-inner">
               {currentQuest.opponentAvatar}
             </div>
@@ -185,8 +185,8 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
                     className={`w-full text-left p-4 rounded-xl border text-sm transition flex flex-col gap-2 ${
                       isSelected
                         ? choice.isBest
-                          ? 'bg-emerald-950/40 border-emerald-500 ring-2 ring-emerald-500/50 shadow-lg shadow-emerald-500/10'
-                          : 'bg-rose-950/40 border-rose-500 ring-2 ring-rose-500/50 shadow-lg shadow-rose-500/10'
+                          ? 'bg-emerald-950/40 border-emerald-500 ring-2 ring-emerald-500/50 shadow-lg shadow-black/40'
+                          : 'bg-rose-950/40 border-rose-500 ring-2 ring-rose-500/50 shadow-lg shadow-black/40'
                         : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 hover:bg-slate-900 text-slate-300'
                     }`}
                   >
@@ -249,7 +249,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
                 <button
                   type="button"
                   onClick={handleNextQuest}
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-indigo-400 hover:to-sky-400 text-white font-extrabold text-xs shadow flex items-center gap-1.5 transition active:scale-95"
+                  className="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-extrabold text-xs shadow flex items-center gap-1.5 transition active:scale-95"
                 >
                   <span>{isLastQuest ? '모든 퀘스트 완료! 다음 스테이지로' : '다음 갈등 퀘스트로'}</span>
                   <ArrowRight className="w-4 h-4" />
