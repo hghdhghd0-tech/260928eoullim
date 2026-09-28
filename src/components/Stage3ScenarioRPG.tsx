@@ -12,6 +12,8 @@ interface Stage3ScenarioRPGProps {
 export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete }) => {
   const [questIndex, setQuestIndex] = useState<number>(0);
   const [selectedChoice, setSelectedChoice] = useState<ScenarioChoice | null>(null);
+  // 점수와 기록은 처음 고른 답으로 정함. 다른 답은 눌러서 해설만 비교해 볼 수 있음
+  const [firstChoice, setFirstChoice] = useState<ScenarioChoice | null>(null);
   const [conflictRecords, setConflictRecords] = useState<ConflictRecord[]>([]);
   const [accumulatedScores, setAccumulatedScores] = useState<CompetencyScore>({
     empathy: 0,
@@ -26,48 +28,48 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
 
   const handleSelectChoice = (choice: ScenarioChoice) => {
     setSelectedChoice(choice);
+    if (!firstChoice) setFirstChoice(choice);
     if (choice.isBest) {
       sound.playSuccess();
       confetti({ particleCount: 45, spread: 50 });
     } else {
       sound.playError();
     }
-
-    // Merge score
-    setAccumulatedScores((prev) => {
-      const next = { ...prev };
-      Object.entries(choice.scoreBonus).forEach(([key, val]) => {
-        if (val !== undefined) {
-          next[key as keyof CompetencyScore] = Math.max(0, (next[key as keyof CompetencyScore] || 0) + val);
-        }
-      });
-      return next;
-    });
   };
 
   const handleNextQuest = () => {
-    if (!selectedChoice) return;
+    if (!selectedChoice || !firstChoice) return;
     sound.playClick();
 
     const currentRecord: ConflictRecord = {
       questId: currentQuest.id,
       questTitle: currentQuest.title,
       category: currentQuest.category,
-      selectedChoiceText: selectedChoice.text,
-      isBest: selectedChoice.isBest,
-      explanation: selectedChoice.explanation
+      selectedChoiceText: firstChoice.text,
+      isBest: firstChoice.isBest,
+      explanation: firstChoice.explanation
     };
+
+    // 점수는 퀘스트마다 처음 고른 선택지 1개만 반영 (여러 번 눌러 점수가 불어나지 않도록)
+    const nextScores = { ...accumulatedScores };
+    Object.entries(firstChoice.scoreBonus).forEach(([key, val]) => {
+      if (val !== undefined) {
+        nextScores[key as keyof CompetencyScore] = Math.max(0, (nextScores[key as keyof CompetencyScore] || 0) + val);
+      }
+    });
+    setAccumulatedScores(nextScores);
 
     const updatedRecords = [...conflictRecords, currentRecord];
     setConflictRecords(updatedRecords);
     setSelectedChoice(null);
+    setFirstChoice(null);
 
     if (!isLastQuest) {
       setQuestIndex((prev) => prev + 1);
     } else {
       sound.playLevelUp();
       confetti({ particleCount: 90, spread: 80 });
-      onComplete(accumulatedScores, updatedRecords);
+      onComplete(nextScores, updatedRecords);
     }
   };
 
@@ -89,7 +91,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
         </p>
 
         {/* Clear Action Steps Banner */}
-        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-xl mx-auto text-xs text-slate-600 flex items-center justify-center gap-2.5">
+        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
           <span>① 상황과 친구 말 읽기 → ② 가장 지혜로운 대처법 1개 터치 → ③ [다음 퀘스트] 터치 (총 4개)</span>
         </div>
@@ -105,7 +107,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
           {SCENARIO_QUESTS.map((q, idx) => (
             <div
               key={q.id}
-              className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-[11px] transition ${
+              className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs transition ${
                 idx < questIndex
                   ? 'bg-emerald-100 text-emerald-700'
                   : idx === questIndex
@@ -128,7 +130,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
         {/* Banner with Subject & Title */}
         <div className="bg-white px-6 py-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20 mr-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20 mr-2">
               {currentQuest.category}
             </span>
             <h3 className="text-lg md:text-xl font-black text-slate-900 mt-1">
@@ -157,7 +159,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
                 <span className="text-xs font-bold text-rose-700">
                   {currentQuest.opponentName}
                 </span>
-                <span className="text-[10px] text-rose-600/80 font-mono">
+                <span className="text-xs text-rose-600/80 font-mono">
                   상대방 상태: 분노/흥분 상태
                 </span>
               </div>
@@ -216,6 +218,12 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
           </div>
 
           {/* Immediate RPG Reaction & Educational Feedback */}
+          {firstChoice && !firstChoice.isBest && (
+            <p className="text-sm text-slate-500 bg-slate-50 rounded-xl px-4 py-3">
+              점수는 <strong className="text-slate-900">처음 고른 답</strong>으로 정해져요. 다른 답도 눌러서 해설을 비교해 보세요.
+            </p>
+          )}
+
           {selectedChoice && (
             <div
               className={`p-4 rounded-xl border space-y-3 transition-all ${
@@ -249,7 +257,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
                 <button
                   type="button"
                   onClick={handleNextQuest}
-                  className="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-extrabold text-xs shadow flex items-center gap-1.5 transition active:scale-95"
+                  className="px-6 py-3.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-extrabold text-sm shadow flex items-center gap-1.5 transition active:scale-95"
                 >
                   <span>{isLastQuest ? '모든 퀘스트 완료! 다음 스테이지로' : '다음 갈등 퀘스트로'}</span>
                   <ArrowRight className="w-4 h-4" />

@@ -55,7 +55,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
         </p>
 
         {/* Clear Action Steps Banner for Students */}
-        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-xl mx-auto text-xs text-slate-600 flex items-center justify-center gap-2.5">
+        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
           <span>① 학년·반 터치 → ② 번호 터치 → ③ 이름 입력 → ④ 감정 선택 → [시작하기]</span>
         </div>
@@ -79,7 +79,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
                     sound.playClick();
                     setGrade(g);
                   }}
-                  className={`h-11 rounded-xl font-bold text-sm transition-all flex items-center justify-center ${
+                  className={`h-12 rounded-xl font-bold text-base transition-all flex items-center justify-center ${
                     grade === g
                       ? 'bg-emerald-500 text-white font-bold shadow-sm shadow-emerald-500/30'
                       : 'bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-700'
@@ -106,7 +106,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
                     sound.playClick();
                     setClassNum(c);
                   }}
-                  className={`h-11 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${
+                  className={`h-12 rounded-xl font-bold text-sm sm:text-base transition-all flex items-center justify-center ${
                     classNum === c
                       ? 'bg-emerald-500 text-white font-bold shadow-sm shadow-emerald-500/30'
                       : 'bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-700'
@@ -130,7 +130,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
               선택: {grade}학년 {classNum}반 {selectedNum}번
             </span>
           </div>
-          <div className="grid grid-cols-6 sm:grid-cols-10 gap-1.5 p-3 bg-slate-50/80 rounded-2xl border border-slate-100 max-h-36 overflow-y-auto">
+          <div className="grid grid-cols-6 sm:grid-cols-10 gap-1.5 p-3 bg-slate-50/80 rounded-2xl border border-slate-100">
             {Array.from({ length: 30 }, (_, i) => i + 1).map((num) => (
               <button
                 key={num}
@@ -139,7 +139,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
                   sound.playClick();
                   setSelectedNum(num);
                 }}
-                className={`h-10 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${
+                className={`h-12 rounded-xl font-bold text-sm sm:text-base transition-all flex items-center justify-center ${
                   selectedNum === num
                     ? 'bg-emerald-500 text-white font-bold shadow-sm shadow-emerald-500/30'
                     : 'bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-700'
@@ -167,7 +167,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
               className="w-full px-4 py-3.5 bg-slate-50/90 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 font-medium text-sm transition"
             />
           </div>
-          <p className="text-[11px] text-slate-400 mt-1 pl-1">
+          <p className="text-xs text-slate-400 mt-1 pl-1">
             ※ 이름을 따로 적지 않아도 <strong className="text-slate-600">'{grade}학년 {classNum}반 {selectedNum}번'</strong>으로 자동 저장됩니다.
           </p>
         </div>
@@ -204,10 +204,10 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
                 >
                   <span className="text-2xl shrink-0">{item.emoji}</span>
                   <div className="flex-1 min-w-0">
-                    <div className="font-bold text-xs text-slate-900 truncate">
+                    <div className="font-bold text-sm text-slate-900 truncate">
                       {item.label}
                     </div>
-                    <div className="text-[10px] text-slate-500 truncate">
+                    <div className="text-xs text-slate-500 truncate">
                       {item.desc}
                     </div>
                   </div>

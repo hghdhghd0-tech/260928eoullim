@@ -148,7 +148,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
         </p>
 
         {/* Clear Action Steps Banner */}
-        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-xl mx-auto text-xs text-slate-600 flex items-center justify-center gap-2.5">
+        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
           <span>① 왼쪽 [6초 호흡] 2회 완료 → ② 오른쪽 [감정 퀴즈 3개] 풀기 → [다음 스테이지] 터치!</span>
         </div>
@@ -183,7 +183,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
             >
               {/* Inner core */}
               <div
-                className={`w-32 h-32 rounded-full flex flex-col items-center justify-center text-slate-900 transition-all duration-700 ${
+                className={`w-32 h-32 rounded-full flex flex-col items-center justify-center text-white transition-all duration-700 ${
                   breathePhase === 'inhale'
                     ? 'bg-sky-600'
                     : breathePhase === 'hold'
@@ -198,26 +198,26 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                 )}
                 {breathePhase === 'inhale' && (
                   <>
-                    <span className="text-xs font-bold text-sky-900">들이쉬기 (코)</span>
+                    <span className="text-sm font-bold text-white/85">들이쉬기 (코)</span>
                     <span className="text-3xl font-black">{seconds}초</span>
                   </>
                 )}
                 {breathePhase === 'hold' && (
                   <>
-                    <span className="text-xs font-bold text-amber-900">잠깐 멈춤</span>
+                    <span className="text-sm font-bold text-white/85">잠깐 멈춤</span>
                     <span className="text-2xl font-black">Hold</span>
                   </>
                 )}
                 {breathePhase === 'exhale' && (
                   <>
-                    <span className="text-xs font-bold text-purple-900">내쉬기 (입)</span>
+                    <span className="text-sm font-bold text-white/85">내쉬기 (입)</span>
                     <span className="text-3xl font-black">{seconds}초</span>
                   </>
                 )}
                 {breathingDone && (
                   <>
-                    <CheckCircle2 className="w-8 h-8 text-emerald-700 mb-1" />
-                    <span className="text-xs font-bold text-emerald-800">쿨다운 성공!</span>
+                    <CheckCircle2 className="w-8 h-8 text-white mb-1" />
+                    <span className="text-sm font-bold text-white">쿨다운 성공!</span>
                   </>
                 )}
               </div>
@@ -241,7 +241,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                 <span>침착성 +25 EXP 획득! 편도체 쿨다운 완료</span>
               </div>
             )}
-            <p className="text-[11px] text-slate-500">
+            <p className="text-xs text-slate-500">
               실제 화날 때: 속으로 1, 2, 3(들이쉼) 4(멈춤) 5, 6(내쉼)을 세어보세요.
             </p>
           </div>
@@ -263,7 +263,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
             {!quizFinished ? (
               <div className="space-y-4">
                 <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
-                  <div className="text-[11px] text-amber-600 font-bold mb-1 flex items-center gap-1">
+                  <div className="text-xs text-amber-600 font-bold mb-1 flex items-center gap-1">
                     <AlertTriangle className="w-3.5 h-3.5" />
                     상황 제시
                   </div>
@@ -284,7 +284,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                         type="button"
                         onClick={() => handleAnswerSelect(idx, opt.isCorrect)}
                         disabled={selectedAnswer !== null}
-                        className={`w-full text-left p-3 rounded-xl border text-xs transition flex items-center justify-between ${
+                        className={`w-full text-left p-4 rounded-xl border text-sm transition flex items-center justify-between gap-3 ${
                           isPicked
                             ? opt.isCorrect
                               ? 'bg-emerald-500/20 border-emerald-500 text-emerald-800 ring-2 ring-emerald-500/50'
@@ -312,7 +312,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                     <div className="pt-2 text-right">
                       <button
                         onClick={handleNextQuiz}
-                        className="px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg text-xs font-bold inline-flex items-center gap-1 shadow"
+                        className="px-5 py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl text-sm font-bold inline-flex items-center gap-1 shadow"
                       >
                         <span>다음 문제</span>
                         <ArrowRight className="w-3.5 h-3.5" />

@@ -62,7 +62,7 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
                 <h3 className="text-base sm:text-lg font-black text-slate-900">
                   오늘 45분 수업, 어떻게 하나요?
                 </h3>
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 border border-amber-500/20">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 border border-amber-500/20">
                   학생용 초간단 가이드
                 </span>
               </div>
@@ -117,11 +117,11 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
                   <div className="flex flex-wrap items-center justify-between gap-1">
                     <span className="text-xs font-bold text-slate-900 flex items-center gap-2">
                       <span>{st.title}</span>
-                      <span className="text-[10px] text-amber-600 font-semibold bg-amber-500/10 px-2 py-0.2 rounded">
+                      <span className="text-xs text-amber-600 font-semibold bg-amber-500/10 px-2 py-0.2 rounded">
                         {st.time}
                       </span>
                     </span>
-                    <span className="text-[11px] text-slate-500 font-mono">
+                    <span className="text-xs text-slate-500 font-mono">
                       {st.badge}
                     </span>
                   </div>

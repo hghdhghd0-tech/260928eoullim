@@ -27,14 +27,14 @@ export const TeacherToolkitModal: React.FC<TeacherToolkitModalProps> = ({ isOpen
   const handlePinSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Default teacher PIN: 0540 (or stopbullying pass hint '054')
-    if (pinInput.trim() === '054' || pinInput.trim() === '0540' || pinInput.trim() === '1234') {
+    if (pinInput.trim() === '054' || pinInput.trim() === '0540') {
       sound.playSuccess();
       setIsAuthenticated(true);
       sessionStorage.setItem('eoullim_teacher_auth', 'true');
       setPinError('');
     } else {
       sound.playError();
-      setPinError('비밀번호가 일치하지 않습니다. (교사용 기본 PIN: 054 또는 0540)');
+      setPinError('비밀번호가 일치하지 않습니다.');
     }
   };
 
@@ -59,7 +59,7 @@ export const TeacherToolkitModal: React.FC<TeacherToolkitModalProps> = ({ isOpen
                 <h3 className="text-base sm:text-lg font-black text-slate-900">
                   (학예 1단) 교사용 수업개선 지원단 툴킷
                 </h3>
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-700 border border-indigo-500/20">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-700 border border-indigo-500/20">
                   교사용 전용 (학생 접근 제한)
                 </span>
               </div>
@@ -124,7 +124,7 @@ export const TeacherToolkitModal: React.FC<TeacherToolkitModalProps> = ({ isOpen
                   type="password"
                   value={pinInput}
                   onChange={(e) => setPinInput(e.target.value)}
-                  placeholder="교사용 PIN (예: 054 또는 0540)"
+                  placeholder="교사용 PIN 입력"
                   maxLength={10}
                   autoFocus
                   className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-center tracking-widest text-lg font-mono placeholder:text-sm placeholder:tracking-normal placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition"
@@ -146,8 +146,8 @@ export const TeacherToolkitModal: React.FC<TeacherToolkitModalProps> = ({ isOpen
                 교사 인증 및 열람
               </button>
 
-              <p className="text-[11px] text-slate-400">
-                ※ 초기 비밀번호: <strong className="text-slate-500">0540</strong> (또는 054)
+              <p className="text-xs text-slate-400">
+                ※ 비밀번호는 담당 선생님께 문의하세요.
               </p>
             </form>
           </div>

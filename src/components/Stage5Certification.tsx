@@ -165,7 +165,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         </p>
 
         {/* Clear Action Steps Banner */}
-        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-xl mx-auto text-xs text-slate-600 flex items-center justify-center gap-2.5">
+        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
           <span>① 오각형 차트 확인 → ② 아래 '나의 약속' 1문장 적기 → ③ 손들고 선생님께 화면 보여드리기!</span>
         </div>
@@ -316,7 +316,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
               <HeartHandshake className="w-4 h-4" />
               나의 1인 1실천 서약 (우리 반 평화를 위한 나의 약속)
             </span>
-            <span className="text-[11px] text-slate-500 print:text-slate-600">
+            <span className="text-xs text-slate-500 print:text-slate-600">
               실천 다짐
             </span>
           </div>
@@ -346,7 +346,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                 <FileText className="w-3.5 h-3.5 text-indigo-600 print:text-indigo-700" />
                 4대 갈등 시나리오 선택 리포트 (학생 활동 기록)
               </span>
-              <span className="text-[10px] text-emerald-600 print:text-emerald-700 bg-emerald-500/10 px-2 py-0.5 rounded font-bold">
+              <span className="text-xs text-emerald-600 print:text-emerald-700 bg-emerald-500/10 px-2 py-0.5 rounded font-bold">
                 4/4 퀘스트 완수
               </span>
             </div>
@@ -358,14 +358,14 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                   className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-amber-700 print:text-amber-800 truncate text-[11px]">
+                    <span className="font-bold text-amber-700 print:text-amber-800 truncate text-xs">
                       {rec.questTitle}
                     </span>
-                    <span className="text-[10px] shrink-0 font-bold">
+                    <span className="text-xs shrink-0 font-bold">
                       {rec.isBest ? '⭕ 현명한 대처' : '⚠️ 보완 필요'}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-700 print:text-slate-700 line-clamp-2">
+                  <p className="text-xs text-slate-700 print:text-slate-700 line-clamp-2">
                     선택: "{rec.selectedChoiceText}"
                   </p>
                 </div>
@@ -385,7 +385,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
               <button
                 type="button"
                 onClick={onOpenJournalModal}
-                className="text-[11px] font-bold text-sky-600 hover:text-sky-700 bg-sky-500/10 hover:bg-sky-500/20 px-2.5 py-1 rounded-lg border border-sky-500/20 transition print:hidden flex items-center gap-1"
+                className="text-xs font-bold text-sky-600 hover:text-sky-700 bg-sky-500/10 hover:bg-sky-500/20 px-2.5 py-1 rounded-lg border border-sky-500/20 transition print:hidden flex items-center gap-1"
               >
                 <Edit3 className="w-3 h-3" />
                 <span>성찰 일지 수정/추가</span>
@@ -395,46 +395,46 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
             <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
-              <span className="font-bold text-amber-600 print:text-amber-800 text-[11px] block">
+              <span className="font-bold text-amber-600 print:text-amber-800 text-xs block">
                 ✨ 1단계 (도입 & 감정진단)
               </span>
-              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
+              <p className="text-xs text-slate-600 print:text-slate-800 italic">
                 {journal.intro ? `"${journal.intro}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
 
             <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
-              <span className="font-bold text-sky-600 print:text-sky-800 text-[11px] block">
+              <span className="font-bold text-sky-600 print:text-sky-800 text-xs block">
                 🌬️ 2단계 (6초 쿨다운 & 감정조절)
               </span>
-              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
+              <p className="text-xs text-slate-600 print:text-slate-800 italic">
                 {journal.cooldown ? `"${journal.cooldown}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
 
             <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
-              <span className="font-bold text-rose-600 print:text-rose-800 text-[11px] block">
+              <span className="font-bold text-rose-600 print:text-rose-800 text-xs block">
                 ⚔️ 3단계 (실전 갈등해결 RPG)
               </span>
-              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
+              <p className="text-xs text-slate-600 print:text-slate-800 italic">
                 {journal.scenarios ? `"${journal.scenarios}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
 
             <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
-              <span className="font-bold text-indigo-600 print:text-indigo-800 text-[11px] block">
+              <span className="font-bold text-indigo-600 print:text-indigo-800 text-xs block">
                 💬 4단계 (나-전달법 콤보)
               </span>
-              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
+              <p className="text-xs text-slate-600 print:text-slate-800 italic">
                 {journal.imessage ? `"${journal.imessage}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
 
             <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1 sm:col-span-2 lg:col-span-2">
-              <span className="font-bold text-emerald-600 print:text-emerald-800 text-[11px] block">
+              <span className="font-bold text-emerald-600 print:text-emerald-800 text-xs block">
                 🌟 5단계 (종합 성찰 & 나의 다짐)
               </span>
-              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
+              <p className="text-xs text-slate-600 print:text-slate-800 italic">
                 {journal.cert ? `"${journal.cert}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
@@ -459,7 +459,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
             <strong className="text-slate-900">태블릿 브라우저 자동 실시간 저장 완료!</strong> (새로고침하거나 꺼져도 기록 유지)
           </span>
         </div>
-        <span className="text-[11px] text-slate-500">
+        <span className="text-xs text-slate-500">
           ※ 외부 서버나 DB 없이 기기 자체(LocalStorage)에 안전하게 보관됩니다.
         </span>
       </div>

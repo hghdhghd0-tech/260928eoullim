@@ -135,6 +135,13 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
     }
   };
 
+  // 닫기만 눌러도 쓴 내용이 사라지지 않도록 저장 후 닫음
+  const handleCloseWithSave = () => {
+    sound.playClick();
+    onSave(formData);
+    onClose();
+  };
+
   const handleSaveAndClose = () => {
     sound.playSuccess();
     onSave(formData);
@@ -163,7 +170,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
                 <h2 className="text-base sm:text-lg font-black text-slate-900">
                   나의 어울림 성찰 일지 (Reflection Journal)
                 </h2>
-                <span className="text-[11px] font-bold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                <span className="text-xs font-bold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
                   {filledCount} / 5 완료
                 </span>
               </div>
@@ -174,7 +181,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
           </div>
 
           <button
-            onClick={onClose}
+            onClick={handleCloseWithSave}
             className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition"
             aria-label="닫기"
           >
@@ -206,7 +213,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
                   <span className="truncate">{st.stageNum}</span>
                 </div>
                 {isFilled ? (
-                  <span className="w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] shrink-0 font-bold">
+                  <span className="w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs shrink-0 font-bold">
                     ✓
                   </span>
                 ) : (
@@ -232,7 +239,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
 
           {/* Quick Suggestions Chips (For Easy Typing on Tablet) */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-bold text-slate-500 flex items-center gap-1">
+            <label className="text-xs font-bold text-slate-500 flex items-center gap-1">
               <Lightbulb className="w-3.5 h-3.5 text-amber-600" />
               <span>작성이 어렵다면? 아래 추천 문장을 터치하여 바로 입력해보세요:</span>
             </label>
@@ -256,7 +263,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
               <label htmlFor="journal-textarea" className="text-xs font-bold text-slate-600">
                 나의 솔직한 생각 (1~2문장)
               </label>
-              <span className="text-[11px] text-slate-400">
+              <span className="text-xs text-slate-400">
                 {(formData[currentStageInfo.key] || '').length}자
               </span>
             </div>
@@ -291,7 +298,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={onClose}
+              onClick={handleCloseWithSave}
               className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs sm:text-sm transition"
             >
               닫기
