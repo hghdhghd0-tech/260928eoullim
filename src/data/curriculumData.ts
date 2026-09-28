@@ -3,35 +3,35 @@ import { IMessageProblem, ScenarioQuest } from '../types';
 export const COMPETENCY_INFO = {
   empathy: {
     name: '공감 (Empathy)',
-    color: 'text-emerald-400',
+    color: 'text-emerald-600',
     bg: 'bg-emerald-500/10 border-emerald-500/30',
     icon: 'HeartHandshake',
     desc: '상대방의 입장에서 생각하고 감정을 헤아리는 힘'
   },
   communication: {
     name: '의사소통 (Communication)',
-    color: 'text-sky-400',
+    color: 'text-sky-600',
     bg: 'bg-sky-500/10 border-sky-500/30',
     icon: 'MessageSquareShare',
     desc: '비난 없이 나의 생각과 부탁을 또박또박 전하는 나-전달법'
   },
   self_regulation: {
     name: '감정조절 (Self-Regulation)',
-    color: 'text-amber-400',
+    color: 'text-amber-600',
     bg: 'bg-amber-500/10 border-amber-500/30',
     icon: 'ShieldAlert',
     desc: '욱하거나 화가 날 때 6초 멈추고 쿨다운하는 능력'
   },
   self_esteem: {
     name: '자기존중감 (Self-Esteem)',
-    color: 'text-purple-400',
+    color: 'text-purple-600',
     bg: 'bg-purple-500/10 border-purple-500/30',
     icon: 'Sparkles',
     desc: '남의 시선이나 비난에 흔들리지 않고 나 자신을 귀하게 여기는 태도'
   },
   conflict_resolution: {
     name: '갈등해결 (Conflict Resolution)',
-    color: 'text-rose-400',
+    color: 'text-rose-600',
     bg: 'bg-rose-500/10 border-rose-500/30',
     icon: 'FlameKindling',
     desc: '다툼이 생겼을 때 주먹이나 욕설 대신 윈-윈(Win-Win)으로 푸는 지혜'

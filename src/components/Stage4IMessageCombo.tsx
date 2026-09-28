@@ -62,44 +62,44 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs font-bold tracking-wide">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
           <MessageSquareShare className="w-3.5 h-3.5" />
           <span>전개 3 (8분) : 나-전달법(I-Message) 콤보 제조기</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-black text-white">
-          "너 때문에!" 대신 <span className="text-sky-400">3단 존중 스킬</span>을 장착하라!
+        <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+          "너 때문에!" 대신 <span className="text-emerald-600">3단 존중 스킬</span>을 장착하라!
         </h2>
-        <p className="text-sm text-slate-300 max-w-xl mx-auto">
+        <p className="text-sm text-slate-600 max-w-xl mx-auto">
           너-전달법(You-Message)은 상대를 공격하여 싸움을 키웁니다.
           <br />
-          <strong className="text-sky-300">[사실] + [감정] + [바람]</strong> 세 카드를 조합해 강력한 대화 스킬을 완성해보세요!
+          <strong className="text-slate-900">[사실] + [감정] + [바람]</strong> 세 카드를 조합해 강력한 대화 스킬을 완성해보세요!
         </p>
 
         {/* Clear Action Steps Banner */}
-        <div className="bg-sky-950/40 border border-sky-500/30 rounded-xl p-3 max-w-xl mx-auto text-xs text-sky-200 flex items-center justify-center gap-2">
-          <span className="font-extrabold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded">지금 할 일</span>
+        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-xl mx-auto text-xs text-slate-600 flex items-center justify-center gap-2.5">
+          <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
           <span>① 사실 카드 + ② 감정 카드 + ③ 바람 카드 각 1장 터치 → [콤보 스킬 발동] 터치!</span>
         </div>
       </div>
 
       {/* Progress & Category */}
-      <div className="flex items-center justify-between bg-slate-900/80 px-4 py-2.5 rounded-xl border border-slate-800 text-xs">
+      <div className="flex items-center justify-between bg-white/80 px-4 py-2.5 rounded-xl border border-slate-100 text-xs">
         <div className="flex items-center gap-2">
-          <span className="font-bold text-slate-400">콤보 훈련 진행:</span>
-          <span className="text-sky-400 font-extrabold">{problemIndex + 1} / {I_MESSAGE_PROBLEMS.length}</span>
+          <span className="font-bold text-slate-500">콤보 훈련 진행:</span>
+          <span className="text-sky-600 font-extrabold">{problemIndex + 1} / {I_MESSAGE_PROBLEMS.length}</span>
         </div>
-        <span className="text-indigo-300 font-semibold bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
+        <span className="text-indigo-700 font-semibold bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
           교과 영역: {currentProblem.subjectCategory}
         </span>
       </div>
 
       {/* Situation Board */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
-        <div className="bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <span className="text-xs font-bold text-amber-400 block mb-1">
+      <div className="bg-white/90 border border-slate-100 rounded-2xl p-5 shadow-sm space-y-4">
+        <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+          <span className="text-xs font-bold text-amber-600 block mb-1">
             🎯 대화가 필요한 갈등 상황:
           </span>
-          <p className="text-sm md:text-base font-semibold text-white">
+          <p className="text-sm md:text-base font-semibold text-slate-900">
             "{currentProblem.situation}"
           </p>
         </div>
@@ -107,46 +107,46 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
         {/* 3 Step Combo Slots Display */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {/* Slot 1: Fact */}
-          <div className="bg-slate-950/70 p-3 rounded-xl border border-sky-500/30 flex flex-col justify-between">
-            <span className="text-[11px] font-bold text-sky-400 flex items-center justify-between">
+          <div className="bg-slate-50/70 p-3 rounded-xl border border-sky-500/20 flex flex-col justify-between">
+            <span className="text-[11px] font-bold text-sky-600 flex items-center justify-between">
               <span>① 객관적 사실 (Fact)</span>
               <span>"~했을 때"</span>
             </span>
-            <div className="my-2 min-h-[50px] flex items-center justify-center p-2 rounded-lg bg-slate-900 border border-slate-800 text-xs text-center text-slate-300">
+            <div className="my-2 min-h-[50px] flex items-center justify-center p-2 rounded-lg bg-white border border-slate-100 text-xs text-center text-slate-600">
               {selectedFact ? (
-                <span className="font-semibold text-white">{selectedFact.text}</span>
+                <span className="font-semibold text-slate-900">{selectedFact.text}</span>
               ) : (
-                <span className="text-slate-500 italic">아래에서 사실 카드를 고르세요</span>
+                <span className="text-slate-400 italic">아래에서 사실 카드를 고르세요</span>
               )}
             </div>
           </div>
 
           {/* Slot 2: Feeling */}
-          <div className="bg-slate-950/70 p-3 rounded-xl border border-purple-500/30 flex flex-col justify-between">
-            <span className="text-[11px] font-bold text-purple-400 flex items-center justify-between">
+          <div className="bg-slate-50/70 p-3 rounded-xl border border-purple-500/20 flex flex-col justify-between">
+            <span className="text-[11px] font-bold text-purple-600 flex items-center justify-between">
               <span>② 나의 솔직한 감정 (Feeling)</span>
               <span>"나는 ~했어"</span>
             </span>
-            <div className="my-2 min-h-[50px] flex items-center justify-center p-2 rounded-lg bg-slate-900 border border-slate-800 text-xs text-center text-slate-300">
+            <div className="my-2 min-h-[50px] flex items-center justify-center p-2 rounded-lg bg-white border border-slate-100 text-xs text-center text-slate-600">
               {selectedFeeling ? (
-                <span className="font-semibold text-white">{selectedFeeling.text}</span>
+                <span className="font-semibold text-slate-900">{selectedFeeling.text}</span>
               ) : (
-                <span className="text-slate-500 italic">아래에서 감정 카드를 고르세요</span>
+                <span className="text-slate-400 italic">아래에서 감정 카드를 고르세요</span>
               )}
             </div>
           </div>
 
           {/* Slot 3: Request */}
-          <div className="bg-slate-950/70 p-3 rounded-xl border border-emerald-500/30 flex flex-col justify-between">
-            <span className="text-[11px] font-bold text-emerald-400 flex items-center justify-between">
+          <div className="bg-slate-50/70 p-3 rounded-xl border border-emerald-500/20 flex flex-col justify-between">
+            <span className="text-[11px] font-bold text-emerald-600 flex items-center justify-between">
               <span>③ 구체적 바람 (Request)</span>
               <span>"앞으로 ~해줘"</span>
             </span>
-            <div className="my-2 min-h-[50px] flex items-center justify-center p-2 rounded-lg bg-slate-900 border border-slate-800 text-xs text-center text-slate-300">
+            <div className="my-2 min-h-[50px] flex items-center justify-center p-2 rounded-lg bg-white border border-slate-100 text-xs text-center text-slate-600">
               {selectedRequest ? (
-                <span className="font-semibold text-white">{selectedRequest.text}</span>
+                <span className="font-semibold text-slate-900">{selectedRequest.text}</span>
               ) : (
-                <span className="text-slate-500 italic">아래에서 바람 카드를 고르세요</span>
+                <span className="text-slate-400 italic">아래에서 바람 카드를 고르세요</span>
               )}
             </div>
           </div>
@@ -157,7 +157,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
           <div className="space-y-4 pt-2">
             {/* Fact Options */}
             <div className="space-y-1.5">
-              <span className="text-xs font-bold text-sky-300">
+              <span className="text-xs font-bold text-sky-700">
                 1단계: 상대방을 비난하지 않고 CCTV처럼 본 그대로(사실) 고르기:
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -171,8 +171,8 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                     }}
                     className={`p-2.5 rounded-xl text-xs text-left border transition ${
                       selectedFact?.id === f.id
-                        ? 'bg-sky-500/20 border-sky-400 text-sky-200 ring-2 ring-sky-400/40'
-                        : 'bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                        ? 'bg-sky-500/20 border-sky-400 text-sky-800 ring-2 ring-sky-400/40'
+                        : 'bg-slate-50/60 border-slate-100 text-slate-600 hover:border-slate-200'
                     }`}
                   >
                     {f.text}
@@ -183,7 +183,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
 
             {/* Feeling Options */}
             <div className="space-y-1.5">
-              <span className="text-xs font-bold text-purple-300">
+              <span className="text-xs font-bold text-purple-700">
                 2단계: 분노나 욕설 대신 나의 진짜 속마음(감정) 고르기:
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -197,8 +197,8 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                     }}
                     className={`p-2.5 rounded-xl text-xs text-left border transition ${
                       selectedFeeling?.id === e.id
-                        ? 'bg-purple-500/20 border-purple-400 text-purple-200 ring-2 ring-purple-400/40'
-                        : 'bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                        ? 'bg-purple-500/20 border-purple-400 text-purple-800 ring-2 ring-purple-400/40'
+                        : 'bg-slate-50/60 border-slate-100 text-slate-600 hover:border-slate-200'
                     }`}
                   >
                     {e.text}
@@ -209,7 +209,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
 
             {/* Request Options */}
             <div className="space-y-1.5">
-              <span className="text-xs font-bold text-emerald-300">
+              <span className="text-xs font-bold text-emerald-700">
                 3단계: 협박이 아닌 실행 가능한 정중한 부탁(바람) 고르기:
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -223,8 +223,8 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                     }}
                     className={`p-2.5 rounded-xl text-xs text-left border transition ${
                       selectedRequest?.id === r.id
-                        ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 ring-2 ring-emerald-400/40'
-                        : 'bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                        ? 'bg-emerald-500/20 border-emerald-400 text-emerald-800 ring-2 ring-emerald-400/40'
+                        : 'bg-slate-50/60 border-slate-100 text-slate-600 hover:border-slate-200'
                     }`}
                   >
                     {r.text}
@@ -239,9 +239,9 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 type="button"
                 onClick={handleExecuteCombo}
                 disabled={!selectedFact || !selectedFeeling || !selectedRequest}
-                className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 disabled:bg-slate-800 disabled:text-slate-600 text-white font-extrabold text-sm shadow-lg shadow-black/40 flex items-center justify-center gap-2 transform active:scale-98 transition"
+                className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-600 disabled:bg-slate-100 disabled:text-slate-400 text-white font-extrabold text-sm shadow-lg shadow-slate-900/5 flex items-center justify-center gap-2 transform active:scale-98 transition"
               >
-                <Zap className="w-4 h-4 text-amber-300" />
+                <Zap className="w-4 h-4 text-amber-700" />
                 <span>나-전달법 리스펙트 콤보 스킬 발동!</span>
               </button>
             </div>
@@ -253,16 +253,16 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
           <div
             className={`p-5 rounded-xl border space-y-4 ${
               comboResult === 'success'
-                ? 'bg-emerald-950/50 border-emerald-500/50 text-emerald-100'
-                : 'bg-rose-950/50 border-rose-500/50 text-rose-100'
+                ? 'bg-emerald-50 border-emerald-500/50 text-emerald-900'
+                : 'bg-rose-50 border-rose-500/50 text-rose-900'
             }`}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 {comboResult === 'success' ? (
-                  <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-600" />
                 ) : (
-                  <Award className="w-6 h-6 text-rose-400" />
+                  <Award className="w-6 h-6 text-rose-600" />
                 )}
                 <span className="font-extrabold text-base">
                   {comboResult === 'success'
@@ -270,15 +270,15 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                     : '💥 콤보 미완성! 상대방을 자극하는 말이 섞여 있습니다'}
                 </span>
               </div>
-              <span className="text-xs font-mono bg-slate-900/70 px-2.5 py-1 rounded">
+              <span className="text-xs font-mono bg-white/70 px-2.5 py-1 rounded">
                 {comboResult === 'success' ? '+35 EXP 획득' : '카드 재조합 필요'}
               </span>
             </div>
 
-            <div className="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800 text-xs leading-relaxed text-slate-300">
-              <p className="font-bold text-amber-300 mb-1">{currentProblem.tip}</p>
+            <div className="bg-slate-50/80 p-3.5 rounded-xl border border-slate-100 text-xs leading-relaxed text-slate-600">
+              <p className="font-bold text-amber-700 mb-1">{currentProblem.tip}</p>
               {comboResult === 'fail' && (
-                <p className="text-rose-300">
+                <p className="text-rose-700">
                   ※ 비난조의 단어('인성', '개념', '거지', '저주')가 들어가면 나-전달법이 아니라 공격이 됩니다. 다시 조합해보세요!
                 </p>
               )}
@@ -289,7 +289,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 <button
                   type="button"
                   onClick={handleResetCombo}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center gap-1.5 transition"
+                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>카드 다시 고르기</span>
@@ -298,7 +298,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 <button
                   type="button"
                   onClick={handleNextProblem}
-                  className="px-5 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-xs shadow flex items-center gap-1.5 transition active:scale-95"
+                  className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs shadow flex items-center gap-1.5 transition active:scale-95"
                 >
                   <span>{isLastProblem ? '모든 콤보 마스터! 최종 인증서 받기' : '다음 문제 도전'}</span>
                   <ArrowRight className="w-4 h-4" />

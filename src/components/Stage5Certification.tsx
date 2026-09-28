@@ -151,22 +151,22 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
       <div className="text-center space-y-2 print:hidden">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-bold tracking-wide">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
           <Award className="w-3.5 h-3.5" />
           <span>정리 7분 : 어울림 마스터 인증서 & 1인 1실천 서약</span>
         </div>
-        <h2 className="text-2xl md:text-4xl font-black text-white">
-          축하합니다! <span className="text-emerald-400">어울림 마스터</span> 인증 완료!
+        <h2 className="text-2xl md:text-4xl font-black text-slate-900">
+          축하합니다! <span className="text-emerald-600">어울림 마스터</span> 인증 완료!
         </h2>
-        <p className="text-sm text-slate-300 max-w-xl mx-auto">
+        <p className="text-sm text-slate-600 max-w-xl mx-auto">
           오늘 45분 동안 배운 공감, 감정조절, 나-전달법, 갈등해결 역량을 바탕으로
           <br />
           우리 반 24명이 서로를 지켜주는 멋진 교실을 만들어가요!
         </p>
 
         {/* Clear Action Steps Banner */}
-        <div className="bg-emerald-950/40 border border-emerald-500/30 rounded-xl p-3 max-w-xl mx-auto text-xs text-emerald-200 flex items-center justify-center gap-2">
-          <span className="font-extrabold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded">지금 할 일</span>
+        <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-xl mx-auto text-xs text-slate-600 flex items-center justify-center gap-2.5">
+          <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
           <span>① 오각형 차트 확인 → ② 아래 '나의 약속' 1문장 적기 → ③ 손들고 선생님께 화면 보여드리기!</span>
         </div>
       </div>
@@ -174,7 +174,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
       {/* Official Certificate Card (Printable) */}
       <div
         id="certificate-print-area"
-        className="bg-slate-900 border-2 border-amber-500/40 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden backdrop-blur-md print:bg-white print:text-black print:border-black print:shadow-none print:p-8"
+        className="bg-white ring-1 ring-slate-900/[0.04] rounded-3xl p-6 md:p-10 shadow-xl shadow-slate-900/[0.06] relative overflow-hidden  print:bg-white print:text-black print:border-2 print:border-black print:shadow-none print:p-8"
       >
         {/* Background Crest Watermark */}
         <div className="absolute -right-12 -bottom-12 opacity-5 pointer-events-none text-[220px]">
@@ -182,14 +182,14 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         </div>
 
         {/* Certificate Top Header */}
-        <div className="text-center space-y-2 border-b border-slate-800 print:border-slate-300 pb-6">
-          <div className="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 print:text-amber-800 text-xs font-black tracking-widest uppercase border border-amber-500/30">
+        <div className="text-center space-y-2 border-b border-slate-100 print:border-slate-300 pb-6">
+          <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 print:text-amber-800 text-xs font-black tracking-widest uppercase">
             학교폭력예방 어울림 역량 인증
           </div>
-          <h1 className="text-3xl md:text-4xl font-black text-white print:text-black tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-black text-slate-900 print:text-black tracking-tight">
             상호존중 어울림 마스터 인증서
           </h1>
-          <p className="text-xs text-slate-400 print:text-slate-600">
+          <p className="text-xs text-slate-500 print:text-slate-600">
             발급 번호: EOULLIM-2026-G{student.grade || 1}-C{String(student.classNum || 1).padStart(2, '0')}-N{String(student.studentNumber).padStart(2, '0')}
           </p>
         </div>
@@ -198,35 +198,35 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 my-6 items-center">
           {/* Left: Student Profile & Badge */}
           <div className="md:col-span-5 space-y-4 text-center md:text-left">
-            <div className="inline-flex items-center gap-3.5 p-3.5 bg-slate-950/80 print:bg-slate-100 rounded-2xl border border-slate-800 print:border-slate-300 w-full">
-              <div className="w-16 h-16 rounded-2xl bg-amber-500 flex items-center justify-center text-3xl shadow-lg shrink-0">
+            <div className="inline-flex items-center gap-3.5 p-3.5 bg-slate-50/80 print:bg-slate-100 rounded-2xl border border-slate-100 print:border-slate-300 w-full">
+              <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center text-3xl shrink-0">
                 🏅
               </div>
               <div className="text-left">
-                <span className="text-xs font-bold text-amber-400 print:text-amber-700 block">
+                <span className="text-xs font-bold text-amber-600 print:text-amber-700 block">
                   중학교 {student.grade || 1}학년 {student.classNum || 1}반 {student.studentNumber}번
                 </span>
-                <h3 className="text-xl font-black text-white print:text-black">
+                <h3 className="text-xl font-black text-slate-900 print:text-black">
                   {student.name}
                 </h3>
-                <span className="text-xs text-indigo-300 print:text-indigo-800 font-semibold flex items-center gap-1">
+                <span className="text-xs text-indigo-700 print:text-indigo-800 font-semibold flex items-center gap-1">
                   <span>🛡️ 상호존중 실천 지킴이</span>
                 </span>
               </div>
             </div>
 
-            <div className="bg-slate-950/60 print:bg-slate-50 p-4 rounded-xl border border-slate-800 print:border-slate-200 space-y-1.5 text-xs">
-              <div className="flex justify-between text-slate-300 print:text-slate-700">
+            <div className="bg-slate-50/60 print:bg-slate-50 p-4 rounded-xl border border-slate-100 print:border-slate-200 space-y-1.5 text-xs">
+              <div className="flex justify-between text-slate-600 print:text-slate-700">
                 <span>총 획득 존중 경험치:</span>
-                <span className="font-extrabold text-amber-400 print:text-amber-800">{totalScore} EXP</span>
+                <span className="font-extrabold text-amber-600 print:text-amber-800">{totalScore} EXP</span>
               </div>
-              <div className="flex justify-between text-slate-300 print:text-slate-700">
+              <div className="flex justify-between text-slate-600 print:text-slate-700">
                 <span>수업 전 감정 배터리:</span>
-                <span className="font-semibold text-sky-400 print:text-sky-800">{student.initialEmotion}</span>
+                <span className="font-semibold text-sky-600 print:text-sky-800">{student.initialEmotion}</span>
               </div>
-              <div className="flex justify-between text-slate-300 print:text-slate-700">
+              <div className="flex justify-between text-slate-600 print:text-slate-700">
                 <span>어울림 등급:</span>
-                <span className="font-extrabold text-emerald-400 print:text-emerald-800">
+                <span className="font-extrabold text-emerald-600 print:text-emerald-800">
                   {totalScore >= 180 ? 'GRADE S (마스터)' : 'GRADE A (수호자)'}
                 </span>
               </div>
@@ -234,8 +234,8 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
           </div>
 
           {/* Right: 5-Competency Radar Chart */}
-          <div className="md:col-span-7 flex flex-col items-center justify-center bg-slate-950/60 print:bg-slate-50 p-4 rounded-2xl border border-slate-800 print:border-slate-200">
-            <span className="text-xs font-bold text-slate-400 print:text-slate-600 mb-2">
+          <div className="md:col-span-7 flex flex-col items-center justify-center bg-slate-50/60 print:bg-slate-50 p-4 rounded-2xl border border-slate-100 print:border-slate-200">
+            <span className="text-xs font-bold text-slate-500 print:text-slate-600 mb-2">
               어울림 5대 핵심 역량 달성도
             </span>
             <div className="relative w-60 h-60">
@@ -248,7 +248,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                     cy={center}
                     r={radius * level}
                     fill="none"
-                    stroke="#2a303b"
+                    stroke="#e2e8f0"
                     strokeDasharray={level === 1 ? 'none' : '2,2'}
                     strokeWidth="1"
                     className="print:stroke-slate-300"
@@ -266,7 +266,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                       y1={center}
                       x2={x2}
                       y2={y2}
-                      stroke="#353c48"
+                      stroke="#e2e8f0"
                       strokeWidth="1"
                       className="print:stroke-slate-300"
                     />
@@ -276,8 +276,8 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                 {/* Score Polygon Area */}
                 <polygon
                   points={polygonPoints}
-                  fill="rgba(207, 239, 46, 0.22)"
-                  stroke="#cfef2e"
+                  fill="rgba(16, 185, 129, 0.18)"
+                  stroke="#10b981"
                   strokeWidth="2.5"
                   className="print:fill-indigo-100 print:stroke-indigo-600"
                 />
@@ -291,13 +291,13 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                   const [lx, ly] = labelPt.split(',');
                   return (
                     <g key={c.key}>
-                      <circle cx={px} cy={py} r="4" fill="#ddf45a" className="print:fill-indigo-700" />
+                      <circle cx={px} cy={py} r="4" fill="#059669" className="print:fill-indigo-700" />
                       <text
                         x={lx}
                         y={ly}
                         textAnchor="middle"
                         dominantBaseline="central"
-                        className="text-[10px] font-bold fill-slate-300 print:fill-slate-800"
+                        className="text-[10px] font-bold fill-slate-700 print:fill-slate-800"
                       >
                         {c.name} ({c.score})
                       </text>
@@ -310,13 +310,13 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         </div>
 
         {/* 1인 1실천 서약 (Pledge) */}
-        <div className="p-5 rounded-2xl bg-indigo-950/40 print:bg-slate-100 border border-indigo-500/30 print:border-slate-300 space-y-3">
+        <div className="p-5 rounded-2xl bg-indigo-50 print:bg-slate-100 border border-indigo-500/20 print:border-slate-300 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-amber-300 print:text-amber-800 flex items-center gap-1.5">
+            <span className="text-xs font-bold text-amber-700 print:text-amber-800 flex items-center gap-1.5">
               <HeartHandshake className="w-4 h-4" />
               나의 1인 1실천 서약 (우리 반 평화를 위한 나의 약속)
             </span>
-            <span className="text-[11px] text-slate-400 print:text-slate-600">
+            <span className="text-[11px] text-slate-500 print:text-slate-600">
               실천 다짐
             </span>
           </div>
@@ -327,12 +327,12 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
               value={pledgeText}
               onChange={(e) => setPledgeText(e.target.value)}
               onBlur={handleSavePledge}
-              className="w-full px-4 py-3 bg-slate-950/80 print:bg-white border border-slate-700 print:border-slate-400 rounded-xl text-white print:text-black font-semibold text-sm focus:outline-none focus:border-indigo-400 transition"
+              className="w-full px-4 py-3 bg-slate-50/80 print:bg-white border border-slate-200 print:border-slate-400 rounded-xl text-slate-900 print:text-black font-semibold text-sm focus:outline-none focus:border-indigo-400 transition"
               placeholder="친구를 존중하기 위한 나의 1가지 실천 약속을 적어보세요"
             />
           </div>
 
-          <p className="text-xs text-slate-400 print:text-slate-600 italic">
+          <p className="text-xs text-slate-500 print:text-slate-600 italic">
             "위 학생은 중학교 1학년 어울림(공감, 의사소통, 감정조절, 자기존중감, 갈등해결) 수업을 성실히 이수하였으며,
             상호존중의 교실 문화를 선도할 것을 약속합니다."
           </p>
@@ -340,13 +340,13 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
 
         {/* 4대 갈등해결 실전 리포트 (Print & Screen) */}
         {conflictRecords && conflictRecords.length > 0 && (
-          <div className="mt-6 pt-5 border-t border-slate-800 print:border-slate-300 space-y-3">
+          <div className="mt-6 pt-5 border-t border-slate-100 print:border-slate-300 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-300 print:text-slate-800 flex items-center gap-1.5">
-                <FileText className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-700" />
+              <span className="text-xs font-bold text-slate-600 print:text-slate-800 flex items-center gap-1.5">
+                <FileText className="w-3.5 h-3.5 text-indigo-600 print:text-indigo-700" />
                 4대 갈등 시나리오 선택 리포트 (학생 활동 기록)
               </span>
-              <span className="text-[10px] text-emerald-400 print:text-emerald-700 bg-emerald-500/10 px-2 py-0.5 rounded font-bold">
+              <span className="text-[10px] text-emerald-600 print:text-emerald-700 bg-emerald-500/10 px-2 py-0.5 rounded font-bold">
                 4/4 퀘스트 완수
               </span>
             </div>
@@ -355,17 +355,17 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
               {conflictRecords.map((rec, i) => (
                 <div
                   key={i}
-                  className="p-3 rounded-xl bg-slate-950/80 print:bg-slate-50 border border-slate-800 print:border-slate-200 space-y-1"
+                  className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-amber-300 print:text-amber-800 truncate text-[11px]">
+                    <span className="font-bold text-amber-700 print:text-amber-800 truncate text-[11px]">
                       {rec.questTitle}
                     </span>
                     <span className="text-[10px] shrink-0 font-bold">
                       {rec.isBest ? '⭕ 현명한 대처' : '⚠️ 보완 필요'}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-200 print:text-slate-700 line-clamp-2">
+                  <p className="text-[11px] text-slate-700 print:text-slate-700 line-clamp-2">
                     선택: "{rec.selectedChoiceText}"
                   </p>
                 </div>
@@ -375,17 +375,17 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         )}
 
         {/* 수업 단계별 성찰 일지 (Reflection Journal) */}
-        <div className="mt-6 pt-5 border-t border-slate-800 print:border-slate-300 space-y-3">
+        <div className="mt-6 pt-5 border-t border-slate-100 print:border-slate-300 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-300 print:text-slate-800 flex items-center gap-1.5">
-              <BookOpen className="w-3.5 h-3.5 text-sky-400 print:text-sky-700" />
+            <span className="text-xs font-bold text-slate-600 print:text-slate-800 flex items-center gap-1.5">
+              <BookOpen className="w-3.5 h-3.5 text-sky-600 print:text-sky-700" />
               수업 단계별 성찰 일지 (Reflection Journal)
             </span>
             {onOpenJournalModal && (
               <button
                 type="button"
                 onClick={onOpenJournalModal}
-                className="text-[11px] font-bold text-sky-400 hover:text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 px-2.5 py-1 rounded-lg border border-sky-500/30 transition print:hidden flex items-center gap-1"
+                className="text-[11px] font-bold text-sky-600 hover:text-sky-700 bg-sky-500/10 hover:bg-sky-500/20 px-2.5 py-1 rounded-lg border border-sky-500/20 transition print:hidden flex items-center gap-1"
               >
                 <Edit3 className="w-3 h-3" />
                 <span>성찰 일지 수정/추가</span>
@@ -394,47 +394,47 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
-            <div className="p-3 rounded-xl bg-slate-950/80 print:bg-slate-50 border border-slate-800 print:border-slate-200 space-y-1">
-              <span className="font-bold text-amber-400 print:text-amber-800 text-[11px] block">
+            <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
+              <span className="font-bold text-amber-600 print:text-amber-800 text-[11px] block">
                 ✨ 1단계 (도입 & 감정진단)
               </span>
-              <p className="text-[11px] text-slate-300 print:text-slate-800 italic">
+              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
                 {journal.intro ? `"${journal.intro}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-slate-950/80 print:bg-slate-50 border border-slate-800 print:border-slate-200 space-y-1">
-              <span className="font-bold text-sky-400 print:text-sky-800 text-[11px] block">
+            <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
+              <span className="font-bold text-sky-600 print:text-sky-800 text-[11px] block">
                 🌬️ 2단계 (6초 쿨다운 & 감정조절)
               </span>
-              <p className="text-[11px] text-slate-300 print:text-slate-800 italic">
+              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
                 {journal.cooldown ? `"${journal.cooldown}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-slate-950/80 print:bg-slate-50 border border-slate-800 print:border-slate-200 space-y-1">
-              <span className="font-bold text-rose-400 print:text-rose-800 text-[11px] block">
+            <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
+              <span className="font-bold text-rose-600 print:text-rose-800 text-[11px] block">
                 ⚔️ 3단계 (실전 갈등해결 RPG)
               </span>
-              <p className="text-[11px] text-slate-300 print:text-slate-800 italic">
+              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
                 {journal.scenarios ? `"${journal.scenarios}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-slate-950/80 print:bg-slate-50 border border-slate-800 print:border-slate-200 space-y-1">
-              <span className="font-bold text-indigo-400 print:text-indigo-800 text-[11px] block">
+            <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
+              <span className="font-bold text-indigo-600 print:text-indigo-800 text-[11px] block">
                 💬 4단계 (나-전달법 콤보)
               </span>
-              <p className="text-[11px] text-slate-300 print:text-slate-800 italic">
+              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
                 {journal.imessage ? `"${journal.imessage}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-slate-950/80 print:bg-slate-50 border border-slate-800 print:border-slate-200 space-y-1 sm:col-span-2 lg:col-span-2">
-              <span className="font-bold text-emerald-400 print:text-emerald-800 text-[11px] block">
+            <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1 sm:col-span-2 lg:col-span-2">
+              <span className="font-bold text-emerald-600 print:text-emerald-800 text-[11px] block">
                 🌟 5단계 (종합 성찰 & 나의 다짐)
               </span>
-              <p className="text-[11px] text-slate-300 print:text-slate-800 italic">
+              <p className="text-[11px] text-slate-600 print:text-slate-800 italic">
                 {journal.cert ? `"${journal.cert}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}
               </p>
             </div>
@@ -442,24 +442,24 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         </div>
 
         {/* Footer Signature */}
-        <div className="mt-6 pt-4 border-t border-slate-800 print:border-slate-300 flex items-center justify-between text-xs text-slate-400 print:text-slate-600">
+        <div className="mt-6 pt-4 border-t border-slate-100 print:border-slate-300 flex items-center justify-between text-xs text-slate-500 print:text-slate-600">
           <span>지도 교사 확인: (인/서명)</span>
-          <span className="font-bold text-slate-300 print:text-slate-800">
+          <span className="font-bold text-slate-600 print:text-slate-800">
             (학예 1단) 수업개선 지원단 어울림 교육과정
           </span>
         </div>
       </div>
 
       {/* LocalStorage Auto-Save Notification Banner */}
-      <div className="p-3.5 bg-slate-900/90 border border-slate-800 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300 print:hidden">
+      <div className="p-3.5 bg-white/90 border border-slate-100 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600 print:hidden">
         <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-          <Save className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+          <Save className="w-4 h-4 text-emerald-600 shrink-0" />
           <span className="font-medium">
-            <strong className="text-white">태블릿 브라우저 자동 실시간 저장 완료!</strong> (새로고침하거나 꺼져도 기록 유지)
+            <strong className="text-slate-900">태블릿 브라우저 자동 실시간 저장 완료!</strong> (새로고침하거나 꺼져도 기록 유지)
           </span>
         </div>
-        <span className="text-[11px] text-slate-400">
+        <span className="text-[11px] text-slate-500">
           ※ 외부 서버나 DB 없이 기기 자체(LocalStorage)에 안전하게 보관됩니다.
         </span>
       </div>
@@ -468,7 +468,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
       <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
         <button
           onClick={handleDownloadTxt}
-          className="px-5 py-3 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-xs sm:text-sm shadow-lg shadow-black/40 flex items-center gap-2 transition active:scale-95"
+          className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-slate-900/5 flex items-center gap-2 transition active:scale-95"
           title="태블릿에 텍스트 파일(.txt)로 활동 결과서 저장"
         >
           {isDownloaded ? <Check className="w-4 h-4" /> : <Download className="w-4 h-4" />}
@@ -477,24 +477,24 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
 
         <button
           onClick={handleCopySummary}
-          className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm shadow flex items-center gap-2 border border-slate-700 transition"
+          className="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs sm:text-sm shadow flex items-center gap-2 border border-slate-200 transition"
           title="패들렛, 구글클래스룸, 위두랑 등에 제출할 수 있도록 복사"
         >
-          {isCopied ? <CheckCircle2 className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-amber-400" />}
+          {isCopied ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-amber-600" />}
           <span>{isCopied ? '결과 전체 복사됨!' : '결과 텍스트 전체 복사'}</span>
         </button>
 
         <button
           onClick={handlePrint}
-          className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm shadow flex items-center gap-2 border border-slate-700 transition"
+          className="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs sm:text-sm shadow flex items-center gap-2 border border-slate-200 transition"
         >
-          <Printer className="w-4 h-4 text-sky-400" />
+          <Printer className="w-4 h-4 text-sky-600" />
           <span>PDF 저장 및 인쇄</span>
         </button>
 
         <button
           onClick={onRestart}
-          className="px-4 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white font-bold text-xs shadow flex items-center gap-1.5 transition border border-slate-800"
+          className="px-4 py-3 rounded-xl bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-900 font-bold text-xs shadow flex items-center gap-1.5 transition border border-slate-100"
         >
           <span>다시하기</span>
         </button>

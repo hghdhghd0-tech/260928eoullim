@@ -10,7 +10,7 @@ import { TeacherToolkitModal } from './components/TeacherToolkitModal';
 import { StudentGuideModal } from './components/StudentGuideModal';
 import { ReflectionJournalModal } from './components/ReflectionJournalModal';
 import { sound } from './utils/sound';
-import { User, ShieldAlert, Swords, MessageSquareShare, Award, Sparkles, BookOpen } from 'lucide-react';
+import { User, ShieldAlert, Swords, MessageSquareShare, Award, Sparkles, BookOpen, Check } from 'lucide-react';
 
 const STAGE_STEPS: { id: GameStage; name: string; time: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { id: 'character', name: '도입 & 감정진단', time: '도입 5분', icon: User },
@@ -145,7 +145,7 @@ export default function App() {
   const journalCount = Object.values(journal).filter((v) => (v || '').trim().length > 0).length;
 
   return (
-    <div className="min-h-screen text-slate-100 flex flex-col">
+    <div className="min-h-screen text-slate-800 flex flex-col">
       {/* Top Navigation */}
       <Navbar
         currentStage={stage}
@@ -162,8 +162,8 @@ export default function App() {
       />
 
       {/* Lesson Step Indicator (1차시 45분 시간표 매핑) */}
-      <div className="border-b border-white/[0.06] bg-slate-950/40 py-3 px-4">
-        <div className="max-w-5xl mx-auto grid grid-cols-5 gap-1.5">
+      <div className="px-4 pt-5">
+        <div className="max-w-5xl mx-auto grid grid-cols-5 gap-1 p-1.5 bg-white rounded-2xl shadow-sm ring-1 ring-slate-900/[0.04]">
           {STAGE_STEPS.map((step, idx) => {
             const Icon = step.icon;
             const isCurrent = stage === step.id;
@@ -182,37 +182,32 @@ export default function App() {
                   }
                 }}
                 disabled={!student && step.id !== 'character'}
-                className={`group relative flex flex-col items-start gap-1 pt-2.5 pb-1 px-1 text-left transition min-w-0 ${
-                  !student && step.id !== 'character' ? 'cursor-not-allowed' : ''
-                }`}
+                className={`flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-left min-w-0 ${
+                  isCurrent ? 'bg-emerald-50' : 'hover:bg-slate-50'
+                } ${!student && step.id !== 'character' ? 'cursor-not-allowed' : ''}`}
               >
                 <span
-                  className={`absolute top-0 left-0 right-0 h-1 rounded-full transition-colors ${
-                    isCurrent ? 'bg-amber-400' : isPassed ? 'bg-emerald-400/70' : 'bg-white/[0.08]'
+                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
+                    isCurrent
+                      ? 'bg-emerald-500 text-white shadow-sm shadow-emerald-500/30'
+                      : isPassed
+                      ? 'bg-emerald-100 text-emerald-600'
+                      : 'bg-slate-100 text-slate-400'
                   }`}
-                />
-                <span className="flex items-center gap-1.5 min-w-0 w-full">
+                >
+                  {isPassed ? <Check className="w-4 h-4" strokeWidth={3} /> : <Icon className="w-4 h-4" />}
+                </span>
+                <span className="min-w-0 hidden sm:block">
                   <span
-                    className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 ${
-                      isCurrent
-                        ? 'bg-amber-400 text-slate-950'
-                        : isPassed
-                        ? 'bg-emerald-400/15 text-emerald-300'
-                        : 'bg-white/[0.05] text-slate-500'
-                    }`}
-                  >
-                    <Icon className="w-3 h-3" />
-                  </span>
-                  <span
-                    className={`text-xs truncate ${
-                      isCurrent ? 'text-white font-extrabold' : isPassed ? 'text-slate-300 font-semibold' : 'text-slate-500 font-medium'
+                    className={`block text-[13px] leading-tight truncate ${
+                      isCurrent ? 'text-slate-900 font-bold' : isPassed ? 'text-slate-600 font-semibold' : 'text-slate-400 font-medium'
                     }`}
                   >
                     {step.name}
                   </span>
-                </span>
-                <span className={`text-[10px] pl-[26px] hidden md:block ${isCurrent ? 'text-amber-300' : 'text-slate-600'}`}>
-                  {step.time}
+                  <span className={`block text-[11px] mt-0.5 ${isCurrent ? 'text-emerald-600 font-semibold' : 'text-slate-400'}`}>
+                    {step.time}
+                  </span>
                 </span>
               </button>
             );
@@ -264,19 +259,19 @@ export default function App() {
             setActiveJournalStage(stage);
             setIsJournalModalOpen(true);
           }}
-          className="fixed bottom-5 right-5 z-30 h-12 px-5 rounded-full bg-slate-800/90 hover:bg-slate-700 backdrop-blur-xl text-white font-bold text-sm shadow-2xl shadow-black/60 border border-white/10 flex items-center gap-2 transform active:scale-95 transition print:hidden"
+          className="fixed bottom-5 right-5 z-30 h-12 px-5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-lg shadow-slate-900/20 flex items-center gap-2 transform active:scale-95 transition print:hidden"
           title="이번 단계 느낀 점 성찰 일지 쓰기"
         >
-          <BookOpen className="w-4 h-4 text-sky-300" />
+          <BookOpen className="w-4 h-4 text-emerald-300" />
           <span>성찰 일지 ({journalCount}/5)</span>
         </button>
       )}
 
       {/* Bottom Footer Info */}
-      <footer className="border-t border-white/[0.06] py-4 text-center text-[11px] text-slate-600 print:hidden">
+      <footer className="py-6 text-center text-[11px] text-slate-400 print:hidden">
         <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-slate-500" />
+            <Sparkles className="w-3.5 h-3.5 text-slate-400" />
             <span>(학예 1단) 수업개선 지원단 교과중심 교실수업 개선 어울림 프로그램</span>
           </div>
           <div>
