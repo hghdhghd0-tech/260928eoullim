@@ -27,6 +27,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
     student.pledge || '친구의 사소한 실수에 욱하지 않고, "나-전달법"으로 먼저 정중하게 대화하겠습니다.'
   );
   const [isCopied, setIsCopied] = useState(false);
+  const [isCopyFailed, setIsCopyFailed] = useState(false);
   const [isDownloaded, setIsDownloaded] = useState(false);
 
   useEffect(() => {
@@ -91,13 +92,31 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
     return text;
   };
 
-  const handleCopySummary = () => {
+  const copyText = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // 학교 태블릿 브라우저에서 클립보드 권한이 막혔을 때 쓰는 예비 방법
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    }
+  };
+
+  const handleCopySummary = async () => {
     sound.playClick();
-    const summary = generateFullSummary();
-    navigator.clipboard.writeText(summary).then(() => {
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2500);
-    });
+    const ok = await copyText(generateFullSummary());
+    setIsCopied(ok);
+    setIsCopyFailed(!ok);
+    if (ok) setTimeout(() => setIsCopied(false), 2500);
   };
 
   const handleDownloadTxt = () => {
@@ -164,7 +183,12 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         {/* Clear Action Steps Banner */}
         <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
-          <span>① 오각형 차트 확인 → ② 아래 '나의 약속' 1문장 적기 → ③ 손들고 선생님께 화면 보여드리기!</span>
+          <span className="flex flex-wrap justify-center gap-x-1.5 text-left">
+            <span className="whitespace-nowrap">① 오각형 차트 확인 →</span>
+            <span className="whitespace-nowrap">② '나의 약속' 1문장 적기 →</span>
+            <span className="whitespace-nowrap">③ 맨 아래 [결과 텍스트 전체 복사] →</span>
+            <span className="whitespace-nowrap">④ 선생님이 알려 준 패들렛·클래스룸에 붙여넣기</span>
+          </span>
         </div>
       </div>
 
@@ -447,28 +471,28 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
           </span>
         </div>
         <span className="text-xs text-slate-500">
-          ※ 외부 서버나 DB 없이 기기 자체(LocalStorage)에 안전하게 보관됩니다.
+          ※ 결과는 이 태블릿에만 남아요. 수업이 끝나기 전에 복사해서 선생님께 제출하세요.
         </span>
       </div>
 
       {/* Bottom Action Buttons (Print, Download, Copy, Redo) */}
       <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
         <button
-          onClick={handleDownloadTxt}
+          onClick={handleCopySummary}
           className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-slate-900/5 flex items-center gap-2 transition active:scale-95"
-          title="태블릿에 텍스트 파일(.txt)로 활동 결과서 저장"
+          title="패들렛, 구글클래스룸, 위두랑 등에 제출할 수 있도록 복사"
         >
-          {isDownloaded ? <Check className="w-4 h-4" /> : <Download className="w-4 h-4" />}
-          <span>{isDownloaded ? '파일 다운로드 완료!' : '결과 파일(.txt) 저장'}</span>
+          {isCopied ? <CheckCircle2 className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+          <span>{isCopied ? '복사됨! 이제 붙여넣기 하세요' : '결과 텍스트 전체 복사'}</span>
         </button>
 
         <button
-          onClick={handleCopySummary}
+          onClick={handleDownloadTxt}
           className="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs sm:text-sm shadow flex items-center gap-2 border border-slate-200 transition"
-          title="패들렛, 구글클래스룸, 위두랑 등에 제출할 수 있도록 복사"
+          title="태블릿에 텍스트 파일(.txt)로 활동 결과서 저장"
         >
-          {isCopied ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-amber-600" />}
-          <span>{isCopied ? '결과 전체 복사됨!' : '결과 텍스트 전체 복사'}</span>
+          {isDownloaded ? <Check className="w-4 h-4 text-emerald-600" /> : <Download className="w-4 h-4 text-emerald-600" />}
+          <span>{isDownloaded ? '파일 다운로드 완료!' : '결과 파일(.txt) 저장'}</span>
         </button>
 
         <button
@@ -486,6 +510,12 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
           <span>다시하기</span>
         </button>
       </div>
+
+      {isCopyFailed && (
+        <p className="text-center text-sm font-semibold text-rose-600 print:hidden">
+          이 태블릿에서는 복사가 안 돼요. [결과 파일(.txt) 저장]을 눌러 파일로 제출하세요.
+        </p>
+      )}
     </div>
   );
 };

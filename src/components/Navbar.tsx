@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Clock, BookOpen, User, RotateCcw, HelpCircle, Shield, Lock } from 'lucide-react';
+import React, { useState } from 'react';
+import { Volume2, VolumeX, BookOpen, User, RotateCcw, HelpCircle, Shield, Lock } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { StudentProfile } from '../types';
 
@@ -25,19 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenJournalModal,
   onReset
 }) => {
-  const [isMuted, setIsMuted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(45 * 60); // 45분 수업
-  const [isTimerRunning, setIsTimerRunning] = useState(false);
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isTimerRunning && timeLeft > 0) {
-      interval = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [isTimerRunning, timeLeft]);
+  const [isMuted, setIsMuted] = useState(!sound.enabled);
 
   const toggleSound = () => {
     sound.enabled = !sound.enabled;
@@ -45,12 +33,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     if (sound.enabled) {
       sound.playClick();
     }
-  };
-
-  const formatTime = (secs: number) => {
-    const m = Math.floor(secs / 60);
-    const s = secs % 60;
-    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -76,26 +58,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Middle Stats: Student info & Lesson Timer */}
+        {/* Middle Stats: Student info (수업 타이머는 교사가 관리하므로 학생 화면에서 뺌) */}
         <div className="flex items-center gap-2 min-w-0">
-          {/* 45 min lesson timer for middle school tablet class */}
-          <div className="flex items-center h-11 pl-3 pr-1 gap-2 rounded-full bg-slate-100 text-xs shrink-0">
-            <Clock className={`w-3.5 h-3.5 ${isTimerRunning ? 'text-emerald-600' : 'text-slate-400'}`} />
-            <span className="font-mono font-bold text-[13px] text-slate-900">{formatTime(timeLeft)}</span>
-            <button
-              onClick={() => {
-                sound.playClick();
-                setIsTimerRunning(!isTimerRunning);
-              }}
-              title={isTimerRunning ? '수업 타이머 일시정지' : '수업 타이머 시작'}
-              className={`h-9 px-3 rounded-full text-xs font-bold ${
-                isTimerRunning ? 'bg-white text-slate-600 shadow-sm' : 'bg-emerald-500 text-white hover:bg-emerald-600'
-              }`}
-            >
-              {isTimerRunning ? '정지' : '시작'}
-            </button>
-          </div>
-
           {/* Student Status Badge */}
           {student && (
             <div className="hidden xl:flex items-center gap-1.5 h-11 px-3 rounded-full bg-slate-100 text-xs min-w-0">
@@ -138,11 +102,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={toggleSound}
-            aria-label={isMuted ? '음소거 해제' : '음소거'}
-            className="w-11 h-11 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200/70 text-slate-500 hover:text-slate-900"
-            title={isMuted ? '음소거 해제' : '효과음 끄기'}
+            aria-label={isMuted ? '효과음 켜기' : '효과음 끄기'}
+            className={`w-11 h-11 flex items-center justify-center rounded-full ${
+              isMuted ? 'bg-slate-100 hover:bg-slate-200/70 text-slate-400 hover:text-slate-900' : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'
+            }`}
+            title={isMuted ? '효과음 켜기' : '효과음 끄기'}
           >
-            {isMuted ? <VolumeX className="w-4 h-4 text-rose-500" /> : <Volume2 className="w-4 h-4" />}
+            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
           </button>
 
           <button

@@ -51,6 +51,8 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
   // Vocabulary Quiz state
   const [quizIndex, setQuizIndex] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  // 틀린 보기는 지워 두고 다시 고를 수 있게 함. 점수는 처음에 맞혔을 때만
+  const [wrongPicks, setWrongPicks] = useState<number[]>([]);
   const [quizScore, setQuizScore] = useState<number>(0);
   const [quizFinished, setQuizFinished] = useState<boolean>(false);
 
@@ -102,11 +104,14 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
   };
 
   const handleAnswerSelect = (optionIdx: number, isCorrect: boolean) => {
-    setSelectedAnswer(optionIdx);
     if (isCorrect) {
+      setSelectedAnswer(optionIdx);
       sound.playSuccess();
-      setQuizScore((prev) => prev + 10);
+      if (wrongPicks.length === 0) {
+        setQuizScore((prev) => prev + 10);
+      }
     } else {
+      setWrongPicks((prev) => [...prev, optionIdx]);
       sound.playError();
     }
   };
@@ -114,6 +119,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
   const handleNextQuiz = () => {
     sound.playClick();
     setSelectedAnswer(null);
+    setWrongPicks([]);
     if (quizIndex < EMOTION_VOCAB_QUIZZES.length - 1) {
       setQuizIndex((prev) => prev + 1);
     } else {
@@ -278,30 +284,34 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                   </p>
                   {currentQuiz.options.map((opt, idx) => {
                     const isPicked = selectedAnswer === idx;
+                    const isWrong = wrongPicks.includes(idx);
                     return (
                       <button
                         key={idx}
                         type="button"
                         onClick={() => handleAnswerSelect(idx, opt.isCorrect)}
-                        disabled={selectedAnswer !== null}
+                        disabled={selectedAnswer !== null || isWrong}
                         className={`w-full text-left p-4 rounded-xl border text-sm transition flex items-center justify-between gap-3 ${
                           isPicked
-                            ? opt.isCorrect
-                              ? 'bg-emerald-500/20 border-emerald-500 text-emerald-800 ring-2 ring-emerald-500/50'
-                              : 'bg-rose-500/20 border-rose-500 text-rose-800 ring-2 ring-rose-500/50'
-                            : selectedAnswer !== null && opt.isCorrect
-                            ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-700'
+                            ? 'bg-emerald-500/20 border-emerald-500 text-emerald-800 ring-2 ring-emerald-500/50'
+                            : isWrong
+                            ? 'bg-rose-50 border-rose-200 text-rose-400'
                             : 'bg-slate-50/60 border-slate-100 hover:border-slate-200 text-slate-600'
                         }`}
                       >
-                        <span className="font-medium">{opt.text}</span>
-                        {isPicked && (
-                          <span>{opt.isCorrect ? '⭕ 정답!' : '❌ 다시 생각'}</span>
-                        )}
+                        <span className={`font-medium ${isWrong ? 'line-through' : ''}`}>{opt.text}</span>
+                        {isPicked && <span className="shrink-0">⭕ 정답!</span>}
+                        {isWrong && <span className="shrink-0">❌</span>}
                       </button>
                     );
                   })}
                 </div>
+
+                {selectedAnswer === null && wrongPicks.length > 0 && (
+                  <div className="p-3 bg-rose-50 rounded-xl text-sm text-rose-700 font-semibold">
+                    아쉬워요! 그 감정 밑에 숨은 마음은 무엇일까요? 다른 보기를 다시 골라 보세요.
+                  </div>
+                )}
 
                 {selectedAnswer !== null && (
                   <div className="p-3 bg-indigo-50 border border-indigo-500/20 rounded-xl text-xs text-indigo-800 space-y-1">
@@ -309,6 +319,9 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                       <span>💡 감정 해설:</span>
                     </p>
                     <p className="text-slate-600 leading-relaxed">{currentQuiz.hint}</p>
+                    {wrongPicks.length > 0 && (
+                      <p className="text-slate-500">다시 생각해서 찾았어요! 점수는 처음에 맞혔을 때만 올라가요.</p>
+                    )}
                     <div className="pt-2 text-right">
                       <button
                         onClick={handleNextQuiz}
@@ -332,7 +345,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                   알아차리는 것이 감정조절의 첫걸음입니다.
                 </p>
                 <div className="text-amber-600 font-bold text-sm">
-                  감정조절 역량 +{quizScore}
+                  감정조절 역량 +{quizScore + 30} (호흡 +30, 퀴즈 +{quizScore})
                 </div>
               </div>
             )}

@@ -43,7 +43,7 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
       step: '5단계',
       time: '정리 7분',
       title: '인증서 확인 & 나의 약속 적기',
-      desc: '내 5대 역량 점수와 오각형 차트를 확인하고, "우리 반을 위한 나의 약속"을 1줄 적은 뒤 선생님께 태블릿 화면을 보여드립니다.',
+      desc: '내 5대 역량 점수와 오각형 차트를 확인하고, "우리 반을 위한 나의 약속"을 1줄 적습니다. 마지막으로 맨 아래 [결과 텍스트 전체 복사]를 눌러 선생님이 알려 준 패들렛·클래스룸에 붙여넣으면 제출 끝!',
       badge: '🏆 마스터 인증'
     }
   ];
@@ -95,7 +95,7 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
             <ul className="text-xs text-slate-700 space-y-1 pl-1 font-medium">
               <li>1. <strong>화면 맨 위 시간표 순서대로</strong> 진행되며, 문제를 풀고 아래 <strong>초록색 [다음 버튼]</strong>을 누르면 넘어갑니다.</li>
               <li>2. 실수로 다른 답을 골라도 <strong>다시 생각하고 풀 수 있으니</strong> 걱정하지 마세요.</li>
-              <li>3. 마지막 <strong>어울림 인증서 화면</strong>이 나오면 <strong>나의 약속을 적고 선생님께 보여드리면 미션 성공!</strong></li>
+              <li>3. 마지막 <strong>어울림 인증서 화면</strong>에서 <strong>나의 약속을 적고 [결과 텍스트 전체 복사] → 패들렛·클래스룸에 붙여넣기</strong>까지 하면 미션 성공! (결과는 이 태블릿에만 남아요)</li>
             </ul>
           </div>
 
