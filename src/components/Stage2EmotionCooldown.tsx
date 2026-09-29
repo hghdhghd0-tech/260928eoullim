@@ -11,33 +11,33 @@ interface Stage2EmotionCooldownProps {
 const EMOTION_VOCAB_QUIZZES = [
   {
     id: 1,
-    situation: '나만 빼고 반 애들이 주말에 피시방 모여서 게임한 걸 월요일에 알았을 때 ("아 개빡치네")',
+    situation: '나만 빼고 반 친구들이 주말에 모여서 논 걸 월요일에 알았을 때 ("아, 진짜 너무하네")',
     options: [
       { text: '소외감과 서운함 (나도 같이 어울리고 싶었는데 외로움)', isCorrect: true },
-      { text: '적개심 (애들을 전부 때려눕히고 싶은 마음)', isCorrect: false },
+      { text: '적개심 (친구들에게 앙갚음하고 싶은 마음)', isCorrect: false },
       { text: '무관심 (아무 감정도 없음)', isCorrect: false }
     ],
-    hint: '"빡친다"는 분노 이면에 "나도 친구들과 함께하고 싶었는데 소외되었다"는 아쉬움이 숨어 있습니다.'
+    hint: '치미는 화 밑에는 "나도 친구들과 함께하고 싶었는데 빠졌다"는 서운함이 숨어 있습니다. 화를 내기 전에 그 마음을 먼저 알아차려 보세요.'
   },
   {
     id: 2,
-    situation: '수업 시간 발표하다가 목소리 삑사리 나서 교실이 빵 터졌을 때 ("아 짜증나 죽겠네")',
+    situation: '수업 시간에 발표하다가 목소리가 갈라져서 교실이 웃음바다가 됐을 때 ("아, 진짜 창피해")',
     options: [
       { text: '부끄러움과 무안함 (실수해서 민망하고 당황스러움)', isCorrect: true },
-      { text: '반 친구들을 향한 깊은 증오', isCorrect: false },
+      { text: '반 친구들을 향한 미움', isCorrect: false },
       { text: '희열과 쾌감', isCorrect: false }
     ],
-    hint: '실수했을 때 욱하는 것은 내 실수가 들통나 "쪽팔리고 부끄러운" 감정을 감추기 위한 방어기제입니다.'
+    hint: '실수했을 때 욱하는 것은 부끄러운 마음을 들키고 싶지 않아서 나오는 반응입니다. 부끄러움은 누구나 느끼는 자연스러운 감정이에요.'
   },
   {
     id: 3,
-    situation: '친구가 내가 진짜 갖고 싶던 한정판 축구화를 신고 와서 자랑할 때 ("아 재수없어")',
+    situation: '친구가 내가 갖고 싶던 축구화를 신고 와서 자랑할 때 ("아, 왜 저래")',
     options: [
       { text: '부러움과 질투 (나도 갖고 싶은데 못 가져서 생기는 샘)', isCorrect: true },
       { text: '정의감 (부정한 행위를 단죄하고 싶은 마음)', isCorrect: false },
       { text: '안도감 (친구 덕분에 행복함)', isCorrect: false }
     ],
-    hint: '상대의 자랑이 짜증나는 이유는 내 안의 "부러움" 때문입니다. 부러움을 인정하면 열등감이 사라집니다.'
+    hint: '상대의 자랑이 거슬리는 이유는 내 안의 부러움 때문입니다. "나도 갖고 싶었어"라고 인정하면 마음이 훨씬 가벼워집니다.'
   }
 ];
 
@@ -142,13 +142,13 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
       <div className="text-center space-y-2">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
           <ShieldAlert className="w-3.5 h-3.5" />
-          <span>전개 1 (10분) : 감정조절 6초 쿨다운 아레나</span>
+          <span>전개 1 (10분) : 감정조절 6초 쿨다운</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-black text-slate-900">
-          욱하는 순간, <span className="text-emerald-600">뇌의 6초 법칙</span>을 지배하라!
+          화가 치밀 때, <span className="text-emerald-600">6초만 기다려 보세요</span>
         </h2>
         <p className="text-sm text-slate-600 max-w-xl mx-auto">
-          인간의 뇌는 화가 났을 때 감정 뇌(편도체)가 이성을 마비시킵니다.
+          화가 나면 감정을 맡은 뇌(편도체)가 생각보다 먼저 반응합니다.
           <br />
           딱 <strong className="text-slate-900">6초만 숨을 고르면</strong> 생각하는 뇌(전두엽)가 다시 작동합니다!
         </p>
@@ -259,7 +259,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
             <div className="flex items-center justify-between text-xs text-slate-500 border-b border-slate-100 pb-3 mb-4">
               <span className="font-bold text-slate-600 flex items-center gap-1.5">
                 <Lightbulb className="w-4 h-4 text-amber-600" />
-                미션 B: "아 빡쳐!" 속 진짜 감정 찾기
+                미션 B: "아 화나!" 속 진짜 감정 찾기
               </span>
               <span className="bg-slate-100 px-2 py-0.5 rounded text-sky-700 font-mono">
                 {quizIndex + 1} / {EMOTION_VOCAB_QUIZZES.length}
@@ -341,7 +341,7 @@ export const Stage2EmotionCooldown: React.FC<Stage2EmotionCooldownProps> = ({ on
                   감정 어휘 탐색 완료!
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  "짜증나/빡쳐" 대신 내 진짜 마음(서운함, 당황스러움, 부끄러움, 부러움)을
+                  "짜증나 / 화나" 대신 내 진짜 마음(서운함, 당황스러움, 부끄러움, 부러움)을
                   알아차리는 것이 감정조절의 첫걸음입니다.
                 </p>
                 <div className="text-amber-600 font-bold text-sm">

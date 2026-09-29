@@ -255,7 +255,7 @@ export const TeacherToolkitModal: React.FC<TeacherToolkitModalProps> = ({ isOpen
                     <span className="font-bold block">💡 중1 남학생 지도 핵심 포인트:</span>
                     <p>
                       중학교 1학년 남학생의 경우 "장난인데 왜 진지빠냐"라며 공격성을 장난으로 위장하는 경향이 큽니다.
-                      본 웹앱은 이를 단순 훈계가 아닌, "게이밍 스킬"이자 "멘탈 승리자의 자격"으로 프레이밍하여 거부감 없이 흡수하도록 설계되었습니다.
+                      본 웹앱은 이를 훈계로 전달하는 대신, 학생이 직접 선택하고 그 결과를 바로 확인하는 게임 형식으로 구성하여 스스로 판단해 보도록 설계되었습니다.
                     </p>
                   </div>
                 </div>
