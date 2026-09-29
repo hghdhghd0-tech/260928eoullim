@@ -8,11 +8,11 @@ interface Stage1CharacterProps {
 }
 
 const EMOTIONS = [
-  { emoji: '🔥', label: '열정 만수르', desc: '의욕 충만! 오늘 수업 기대됨', energy: 5, color: 'border-orange-500/50 bg-orange-500/10 text-orange-700' },
+  { emoji: '🔥', label: '아주 좋음', desc: '의욕이 넘치고 수업이 기대돼요', energy: 5, color: 'border-orange-500/50 bg-orange-500/10 text-orange-700' },
   { emoji: '😊', label: '편안함 & 좋음', desc: '기분 좋고 여유로운 상태', energy: 4, color: 'border-emerald-500/50 bg-emerald-500/10 text-emerald-700' },
-  { emoji: '😐', label: '무덤덤 / 보통', desc: '평소와 다름없는 학교 생활', energy: 3, color: 'border-slate-300/50 bg-slate-400/10 text-slate-600' },
+  { emoji: '😐', label: '보통 / 무덤덤', desc: '평소와 다름없는 학교 생활', energy: 3, color: 'border-slate-300/50 bg-slate-400/10 text-slate-600' },
   { emoji: '🥱', label: '피곤함 / 졸림', desc: '에너지가 조금 부족한 상태', energy: 2, color: 'border-amber-500/50 bg-amber-500/10 text-amber-700' },
-  { emoji: '💢', label: '약간 욱함 / 답답', desc: '사소한 일에도 예민해질 수 있음', energy: 1, color: 'border-rose-500/50 bg-rose-500/10 text-rose-700' }
+  { emoji: '💢', label: '화남 / 답답함', desc: '사소한 일에도 예민해질 수 있음', energy: 1, color: 'border-rose-500/50 bg-rose-500/10 text-rose-700' }
 ];
 
 export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) => {
@@ -236,7 +236,7 @@ export const Stage1Character: React.FC<Stage1CharacterProps> = ({ onComplete }) 
               1인 1태블릿 기반
             </span>
             <span>•</span>
-            <span>별도 회원가입 / DB 없음</span>
+            <span>회원가입 없음 · 서버 전송 없음</span>
             <span>•</span>
             <span>기기 내 자동 저장</span>
           </div>

@@ -82,12 +82,12 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
           <span>전개 2 (15분) : 실전 갈등해결 시나리오 RPG (4대 퀘스트)</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-black text-slate-900">
-          일상의 갈등 상황, <span className="text-emerald-600">당신의 선택</span>은?
+          이런 상황, <span className="text-emerald-600">나는 어떻게</span> 말할까?
         </h2>
         <p className="text-sm text-slate-600 max-w-xl mx-auto">
-          중학교 1학년 일상에서 가장 흔히 일어나는 리얼한 갈등 상황입니다.
+          중학교 1학년 교실에서 실제로 자주 일어나는 갈등 상황입니다.
           <br />
-          비난이나 주먹 대신, 상대를 설득하고 나를 지키는 <strong className="text-slate-900">최선의 대화법</strong>을 찾아보세요!
+          비난이나 주먹 대신, <strong className="text-slate-900">나도 지키고 관계도 지키는 말</strong>을 찾아보세요.
         </p>
 
         {/* Clear Action Steps Banner */}
@@ -173,7 +173,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
           <div className="space-y-3 pt-2">
             <p className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-amber-600" />
-              나의 대응 스킬 선택 (가장 현명한 존중의 대처법은?)
+              나의 대응 선택 (가장 현명한 존중의 대처법은?)
             </p>
 
             <div className="space-y-2.5">
@@ -235,7 +235,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
               <div className="flex items-center justify-between border-b border-emerald-500/20 pb-2">
                 <span className="font-bold text-xs flex items-center gap-1.5">
                   <HeartHandshake className="w-4 h-4 text-emerald-600" />
-                  {selectedChoice.isBest ? '✨ 퀘스트 대성공! (상대방 반응)' : '⚠️ 아쉬운 결과 (상대방 반응)'}
+                  {selectedChoice.isBest ? '✨ 좋은 선택이었어요 (상대 반응)' : '⚠️ 아쉬운 결과 (상대 반응)'}
                 </span>
                 <span className="text-xs font-bold bg-white/60 px-2 py-0.5 rounded">
                   {selectedChoice.opponentState}
@@ -248,7 +248,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
 
               <div className="text-xs text-slate-600 bg-slate-50/70 p-3 rounded-lg border border-slate-100">
                 <span className="font-bold text-amber-700 block mb-1">
-                  🎓 어울림 솔루션 해설:
+                  🎓 왜 그럴까요?
                 </span>
                 <p>{selectedChoice.explanation}</p>
               </div>

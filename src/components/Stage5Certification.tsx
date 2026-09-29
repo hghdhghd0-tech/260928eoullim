@@ -24,7 +24,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
   onRestart
 }) => {
   const [pledgeText, setPledgeText] = useState(
-    student.pledge || '친구의 사소한 실수에 욱하지 않고, "나-전달법"으로 먼저 정중하게 대화하겠습니다.'
+    student.pledge || '친구의 사소한 실수에 화내지 않고, "나-전달법"으로 먼저 정중하게 대화하겠습니다.'
   );
   const [isCopied, setIsCopied] = useState(false);
   const [isCopyFailed, setIsCopyFailed] = useState(false);
@@ -73,17 +73,17 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         text += `\n[퀘스트 ${idx + 1}] ${rec.questTitle} (${rec.category})\n`;
         text += ` - 나의 대처: "${rec.selectedChoiceText}"\n`;
         text += ` - 결과: ${rec.isBest ? '⭕ 현명한 존중 대처' : '⚠️ 보완 필요'}\n`;
-        text += ` - 핵심 솔루션: ${rec.explanation}\n`;
+        text += ` - 배운 점: ${rec.explanation}\n`;
       });
     } else {
       text += `(갈등 해결 4대 시나리오 이수 완료)\n`;
     }
 
-    text += `\n[수업 단계별 성찰 일지 (Reflection Journal)]\n`;
+    text += `\n[수업 단계별 성찰 일지]\n`;
     text += `- 1단계(도입 & 감정진단): ${journal.intro ? `"${journal.intro}"` : '(작성된 내용 없음)'}\n`;
     text += `- 2단계(6초 쿨다운 & 감정조절): ${journal.cooldown ? `"${journal.cooldown}"` : '(작성된 내용 없음)'}\n`;
     text += `- 3단계(실전 갈등해결 RPG): ${journal.scenarios ? `"${journal.scenarios}"` : '(작성된 내용 없음)'}\n`;
-    text += `- 4단계(나-전달법 콤보): ${journal.imessage ? `"${journal.imessage}"` : '(작성된 내용 없음)'}\n`;
+    text += `- 4단계(나-전달법): ${journal.imessage ? `"${journal.imessage}"` : '(작성된 내용 없음)'}\n`;
     text += `- 5단계(종합 성찰 & 다짐): ${journal.cert ? `"${journal.cert}"` : '(작성된 내용 없음)'}\n`;
 
     text += `\n[우리 반을 위한 나의 1인 1실천 서약]
@@ -390,7 +390,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-600 print:text-slate-800 flex items-center gap-1.5">
               <BookOpen className="w-3.5 h-3.5 text-sky-600 print:text-sky-700" />
-              수업 단계별 성찰 일지 (Reflection Journal)
+              수업 단계별 성찰 일지
             </span>
             {onOpenJournalModal && (
               <button
@@ -434,7 +434,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
 
             <div className="p-3 rounded-xl bg-slate-50/80 print:bg-slate-50 border border-slate-100 print:border-slate-200 space-y-1">
               <span className="font-bold text-indigo-600 print:text-indigo-800 text-xs block">
-                💬 4단계 (나-전달법 콤보)
+                💬 4단계 (나-전달법)
               </span>
               <p className="text-xs text-slate-600 print:text-slate-800 italic">
                 {journal.imessage ? `"${journal.imessage}"` : '(아직 작성되지 않았습니다. 상단 버튼으로 작성해보세요)'}

@@ -64,28 +64,28 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
       <div className="text-center space-y-2">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
           <MessageSquareShare className="w-3.5 h-3.5" />
-          <span>전개 3 (8분) : 나-전달법(I-Message) 콤보 제조기</span>
+          <span>전개 3 (8분) : 나-전달법 카드 조합</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-black text-slate-900">
-          "너 때문에!" 대신 <span className="text-emerald-600">3단 존중 스킬</span>을 장착하라!
+          "너 때문에!" 대신 <span className="text-emerald-600">존중 카드 3장</span>을 맞춰 보세요
         </h2>
         <p className="text-sm text-slate-600 max-w-xl mx-auto">
           너-전달법(You-Message)은 상대를 공격하여 싸움을 키웁니다.
           <br />
-          <strong className="text-slate-900">[사실] + [감정] + [바람]</strong> 세 카드를 조합해 강력한 대화 스킬을 완성해보세요!
+          <strong className="text-slate-900">[사실] + [감정] + [바람]</strong> 세 카드를 조합하면 나도 지키고 관계도 지키는 말이 완성됩니다.
         </p>
 
         {/* Clear Action Steps Banner */}
         <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
-          <span>① 사실 카드 + ② 감정 카드 + ③ 바람 카드 각 1장 터치 → [콤보 스킬 발동] 터치!</span>
+          <span>① 사실 카드 + ② 감정 카드 + ③ 바람 카드 각 1장 터치 → [카드 3장 맞추기] 터치!</span>
         </div>
       </div>
 
       {/* Progress & Category */}
       <div className="flex items-center justify-between bg-white/80 px-4 py-2.5 rounded-xl border border-slate-100 text-xs">
         <div className="flex items-center gap-2">
-          <span className="font-bold text-slate-500">콤보 훈련 진행:</span>
+          <span className="font-bold text-slate-500">훈련 진행:</span>
           <span className="text-sky-600 font-extrabold">{problemIndex + 1} / {I_MESSAGE_PROBLEMS.length}</span>
         </div>
         <span className="text-indigo-700 font-semibold bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
@@ -242,7 +242,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-600 disabled:bg-slate-100 disabled:text-slate-400 text-white font-extrabold text-sm shadow-lg shadow-slate-900/5 flex items-center justify-center gap-2 transform active:scale-98 transition"
               >
                 <Zap className="w-4 h-4 text-amber-700" />
-                <span>나-전달법 리스펙트 콤보 스킬 발동!</span>
+                <span>내가 완성한 나-전달법</span>
               </button>
             </div>
           </div>
@@ -266,8 +266,8 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 )}
                 <span className="font-extrabold text-base">
                   {comboResult === 'success'
-                    ? '✨ PERFECT COMBO! 존중 대화 스킬 발동 성공!'
-                    : '💥 콤보 미완성! 상대방을 자극하는 말이 섞여 있습니다'}
+                    ? '✨ 완벽해요! 상대가 방어하지 않고 들을 수 있는 말입니다'
+                    : '💥 아직이에요! 상대를 자극하는 말이 섞여 있습니다'}
                 </span>
               </div>
               <span className="text-xs font-mono bg-white/70 px-2.5 py-1 rounded">
@@ -300,7 +300,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                   onClick={handleNextProblem}
                   className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm shadow flex items-center gap-1.5 transition active:scale-95"
                 >
-                  <span>{isLastProblem ? '모든 콤보 마스터! 최종 인증서 받기' : '다음 문제 도전'}</span>
+                  <span>{isLastProblem ? '모든 문제 완료! 최종 인증서 받기' : '다음 문제 도전'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               )}

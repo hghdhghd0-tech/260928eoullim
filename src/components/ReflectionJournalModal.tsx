@@ -41,8 +41,8 @@ const STAGE_QUESTIONS: StageInfo[] = [
     stageNum: '2단계',
     title: '6초 쿨다운 & 감정조절',
     icon: <Wind className="w-4 h-4 text-sky-600" />,
-    question: '화가 날 때 6초 호흡을 해보거나, "빡침" 뒤의 진짜 감정(속상함, 무안함, 서운함)을 찾아보니 어떤 생각이 들었나요?',
-    placeholder: '예: 욱해서 바로 욕하거나 화내지 말고, 6초 동안 숨을 크게 쉬어야겠다고 느꼈다.',
+    question: '화가 날 때 6초 호흡을 해보거나, 화 뒤에 숨은 진짜 감정(속상함, 무안함, 서운함)을 찾아보니 어떤 생각이 들었나요?',
+    placeholder: '예: 화가 나도 바로 소리 지르지 말고, 6초 동안 숨을 크게 쉬어야겠다고 느꼈다.',
     suggestions: [
       '화날 때 바로 소리 지르지 않고 6초 심호흡을 먼저 해야겠어요.',
       '친구가 짜증 낼 때 그 뒤에 속상한 마음이 있다는 걸 알게 됐어요.',
@@ -54,7 +54,7 @@ const STAGE_QUESTIONS: StageInfo[] = [
     stageNum: '3단계',
     title: '실전 갈등해결 RPG',
     icon: <Swords className="w-4 h-4 text-rose-600" />,
-    question: '축구 실수, 게임/단톡방 패드립, 조별과제 무임승차 등 갈등 상황에서 비난 대신 현명한 선택을 해보며 무엇을 깨달았나요?',
+    question: '경기 중 실수, 온라인에서 선 넘는 말, 모둠과제 무임승차 등 갈등 상황에서 비난 대신 현명한 선택을 해보며 무엇을 깨달았나요?',
     placeholder: '예: 맞받아쳐서 싸우면 둘 다 손해고, 차분하게 원인을 짚고 선을 긋는 대화가 최고라는 걸 배웠다.',
     suggestions: [
       '맞받아쳐서 욕하기보다 차분하고 단호하게 선을 긋는 게 더 멋있어요.',
@@ -65,7 +65,7 @@ const STAGE_QUESTIONS: StageInfo[] = [
   {
     key: 'imessage',
     stageNum: '4단계',
-    title: '나-전달법(I-Message)',
+    title: '나-전달법',
     icon: <MessageSquare className="w-4 h-4 text-indigo-600" />,
     question: '"너 때문에 망했잖아!" 같은 비난 대신, [사실]+[내 솔직한 감정]+[구체적 바람]으로 표현해보니 어떤 느낌이 들었나요?',
     placeholder: '예: 상대를 공격하지 않고 내 기분을 사실대로 말하니까 싸움이 안 나고 대화가 통할 것 같다.',
@@ -168,7 +168,7 @@ export const ReflectionJournalModal: React.FC<ReflectionJournalModalProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base sm:text-lg font-black text-slate-900">
-                  나의 어울림 성찰 일지 (Reflection Journal)
+                  나의 어울림 성찰 일지
                 </h2>
                 <span className="text-xs font-bold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
                   {filledCount} / 5 완료
