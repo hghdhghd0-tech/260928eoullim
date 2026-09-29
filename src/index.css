@@ -1,7 +1,84 @@
 @import "tailwindcss";
 
+/*
+ * 어울림 마스터 디자인 토큰
+ * - 배경: 아주 연한 회색(#F8FAFC), 카드: 흰색 + 은은한 그림자
+ * - 주 색상: 민트(emerald-500, #10B981) — 진행 버튼, 현재 단계, 선택 상태
+ * - 보조 색상: 인디고(sky·indigo) 정보 / 앰버 강조 / 로즈 오답·경고
+ * - 기본 파랑(blue·sky)은 쓰지 않도록 sky를 인디고 계열로 다시 매핑
+ */
+@theme {
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --font-mono: 'Pretendard Variable', Pretendard, ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --color-sky-50: #eef2ff;
+  --color-sky-100: #e0e7ff;
+  --color-sky-200: #c7d2fe;
+  --color-sky-300: #a5b4fc;
+  --color-sky-400: #818cf8;
+  --color-sky-500: #6366f1;
+  --color-sky-600: #4f46e5;
+  --color-sky-700: #4338ca;
+  --color-sky-800: #3730a3;
+  --color-sky-900: #312e81;
+  --color-sky-950: #1e1b4b;
+
+  --color-cyan-500: #6366f1;
+}
+
 @layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: var(--font-sans);
+    background-color: #f8fafc;
+    color: var(--color-slate-900);
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.035em;
+  }
+
+  ::selection {
+    background: rgb(16 185 129 / 0.2);
+  }
+
+  /* 모든 버튼: 부드러운 전환, 올리면 살짝 떠오르고 누르면 살짝 작아짐 */
+  button {
+    transition-property: color, background-color, border-color, box-shadow, opacity, translate, scale;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  @media (hover: hover) {
+    button:not(:disabled):hover {
+      translate: 0 -1px;
+    }
+  }
+
+  button:not(:disabled):active {
+    translate: 0 0;
+    scale: 0.97;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-emerald-500);
+    outline-offset: 2px;
+  }
+
+  /* 숫자는 흔들리지 않게 고정폭으로 */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
   }
 }

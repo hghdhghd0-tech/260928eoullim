@@ -3,35 +3,35 @@ import { IMessageProblem, ScenarioQuest } from '../types';
 export const COMPETENCY_INFO = {
   empathy: {
     name: '공감 (Empathy)',
-    color: 'text-emerald-400',
+    color: 'text-emerald-600',
     bg: 'bg-emerald-500/10 border-emerald-500/30',
     icon: 'HeartHandshake',
     desc: '상대방의 입장에서 생각하고 감정을 헤아리는 힘'
   },
   communication: {
     name: '의사소통 (Communication)',
-    color: 'text-sky-400',
+    color: 'text-sky-600',
     bg: 'bg-sky-500/10 border-sky-500/30',
     icon: 'MessageSquareShare',
     desc: '비난 없이 나의 생각과 부탁을 또박또박 전하는 나-전달법'
   },
   self_regulation: {
     name: '감정조절 (Self-Regulation)',
-    color: 'text-amber-400',
+    color: 'text-amber-600',
     bg: 'bg-amber-500/10 border-amber-500/30',
     icon: 'ShieldAlert',
     desc: '욱하거나 화가 날 때 6초 멈추고 쿨다운하는 능력'
   },
   self_esteem: {
     name: '자기존중감 (Self-Esteem)',
-    color: 'text-purple-400',
+    color: 'text-purple-600',
     bg: 'bg-purple-500/10 border-purple-500/30',
     icon: 'Sparkles',
     desc: '남의 시선이나 비난에 흔들리지 않고 나 자신을 귀하게 여기는 태도'
   },
   conflict_resolution: {
     name: '갈등해결 (Conflict Resolution)',
-    color: 'text-rose-400',
+    color: 'text-rose-600',
     bg: 'bg-rose-500/10 border-rose-500/30',
     icon: 'FlameKindling',
     desc: '다툼이 생겼을 때 주먹이나 욕설 대신 윈-윈(Win-Win)으로 푸는 지혜'
@@ -303,8 +303,8 @@ export const LESSON_PLAN = {
     {
       step: '정리 (7분)',
       name: '어울림 마스터 인증서 & 1인 1실천 서약',
-      activity: '5대 역량 획득 점수 및 레이더 차트 확인, "우리 반을 위한 나의 존중 서약" 1문장 작성, 최종 인증서 화면 캡처 또는 인쇄로 교사에게 제출.',
-      teacherTip: '작성된 서약서를 교실 게시판에 붙이거나 학급 밴드/클래스룸에 공유하여 학기 내내 실천 문화 형성'
+      activity: '5대 역량 획득 점수 및 레이더 차트 확인, "우리 반을 위한 나의 존중 서약" 1문장 작성, [결과 텍스트 전체 복사] 후 교사가 안내한 패들렛·구글 클래스룸에 붙여넣어 제출(복사가 안 되는 기기는 [결과 파일(.txt) 저장]으로 제출).',
+      teacherTip: '결과는 학생 태블릿에만 저장되므로 수업 전에 제출할 패들렛·클래스룸 주소를 칠판이나 QR로 안내하고, 정리 시간에 제출까지 마치게 하기. 모은 서약은 교실 게시판에 붙여 학기 내내 실천 문화 형성'
     }
   ],
   subjectLinks: [

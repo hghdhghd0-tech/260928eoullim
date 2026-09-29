@@ -2,7 +2,8 @@
 
 class SoundManager {
   private ctx: AudioContext | null = null;
-  public enabled: boolean = true;
+  // 교실에서 태블릿 여러 대가 동시에 소리 내지 않도록 기본은 소리 끔. 상단 스피커 버튼으로 켤 수 있음
+  public enabled: boolean = false;
 
   private initCtx() {
     if (!this.ctx && typeof window !== 'undefined') {
