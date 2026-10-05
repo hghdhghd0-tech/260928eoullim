@@ -82,3 +82,30 @@
     letter-spacing: 0;
   }
 }
+
+/* 운동장 지도: 캐릭터 걷기·대기, 배지 튀어나오기 */
+@keyframes map-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-9%) rotate(2deg); }
+}
+@keyframes map-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4%); }
+}
+@keyframes map-step {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes map-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.map-walk { animation: map-bob 0.32s ease-in-out infinite; }
+.map-idle { animation: map-float 2.4s ease-in-out infinite; }
+.map-walk .map-leg-l { animation: map-step 0.32s ease-in-out infinite; }
+.map-walk .map-leg-r { animation: map-step 0.32s ease-in-out infinite 0.16s; }
+.map-pop { animation: map-pop 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+@media (prefers-reduced-motion: reduce) {
+  .map-walk, .map-idle, .map-pop, .map-walk .map-leg-l, .map-walk .map-leg-r { animation: none; }
+}

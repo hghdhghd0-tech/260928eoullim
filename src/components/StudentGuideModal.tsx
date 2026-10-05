@@ -15,7 +15,7 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
       step: '1단계',
       time: '도입 5분',
       title: '내 학년·반·번호 & 감정 선택',
-      desc: '태블릿 화면에서 내 학년과 반(1~10반), 출석번호(1~30번)를 누르고, 이름과 오늘 내 기분을 골라 [퀘스트 시작하기]를 누릅니다.',
+      desc: '태블릿 화면에서 내 학년과 반(1~10반), 출석번호(1~30번)를 누르고, 이름과 오늘 내 기분을 골라 [퀘스트 시작하기]를 누릅니다. 운동장 지도가 나오면 반짝이는 다음 스테이지를 눌러 들어갑니다.',
       badge: '👤 학생 설정'
     },
     {
@@ -93,7 +93,7 @@ export const StudentGuideModal: React.FC<StudentGuideModalProps> = ({ isOpen, on
               💡 이것만 알면 끝나는 3가지 꿀팁!
             </span>
             <ul className="text-xs text-slate-700 space-y-1 pl-1 font-medium">
-              <li>1. <strong>화면 맨 위 시간표 순서대로</strong> 진행되며, 문제를 풀고 아래 <strong>초록색 [다음 버튼]</strong>을 누르면 넘어갑니다.</li>
+              <li>1. 스테이지를 깰 때마다 <strong>운동장 지도</strong>로 돌아와 배지를 받고, 내 캐릭터가 다음 스테이지로 걸어갑니다. 지도 아래 <strong>초록색 [입장] 버튼</strong>을 누르면 다음 스테이지가 시작돼요.</li>
               <li>2. 실수로 다른 답을 골라도 <strong>다시 생각하고 풀 수 있으니</strong> 걱정하지 마세요.</li>
               <li>3. 마지막 <strong>어울림 인증서 화면</strong>에서 <strong>나의 약속을 적고 [결과 텍스트 전체 복사] → 패들렛·클래스룸에 붙여넣기</strong>까지 하면 미션 성공! (결과는 이 태블릿에만 남아요)</li>
             </ul>
