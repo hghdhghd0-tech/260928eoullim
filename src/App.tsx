@@ -9,8 +9,9 @@ import { Stage5Certification } from './components/Stage5Certification';
 import { TeacherToolkitModal } from './components/TeacherToolkitModal';
 import { StudentGuideModal } from './components/StudentGuideModal';
 import { ReflectionJournalModal } from './components/ReflectionJournalModal';
+import { StageMap } from './components/StageMap';
 import { sound } from './utils/sound';
-import { User, ShieldAlert, Swords, MessageSquareShare, Award, BookOpen, Check } from 'lucide-react';
+import { User, ShieldAlert, Swords, MessageSquareShare, Award, BookOpen, Check, Map as MapIcon } from 'lucide-react';
 
 const STAGE_ORDER: GameStage[] = ['character', 'cooldown', 'scenarios', 'imessage', 'cert'];
 
@@ -44,6 +45,8 @@ export default function App() {
   const [isGuideModalOpen, setIsGuideModalOpen] = useState<boolean>(false);
   const [isJournalModalOpen, setIsJournalModalOpen] = useState<boolean>(false);
   const [activeJournalStage, setActiveJournalStage] = useState<GameStage>('cooldown');
+  // 방금 깬 단계 번호. 지도에서 클리어 안내와 걷기 연출을 한 번만 보여 줌
+  const [justCleared, setJustCleared] = useState<number | null>(null);
 
   // Load from localStorage on mount (for tablet reliability)
   useEffect(() => {
@@ -84,14 +87,22 @@ export default function App() {
     }
   }, [student, scores, conflictRecords, journal, stage, maxStageIndex]);
 
-  // 단계를 처음 끝냈을 때만 true. 다음 단계까지 열어 줌
+  // 단계를 처음 끝냈을 때만 true. 다음 단계까지 열고, 지도로 돌아가 클리어 연출을 보여 줌
   const completeStage = (next: GameStage) => {
     const nextIndex = STAGE_ORDER.indexOf(next);
     const isFirstTime = nextIndex > maxStageIndex;
-    if (isFirstTime) setMaxStageIndex(nextIndex);
-    setStage(next);
+    if (isFirstTime) {
+      setMaxStageIndex(nextIndex);
+      setJustCleared(nextIndex - 1);
+    }
+    setStage('map');
+    window.scrollTo({ top: 0 });
     return isFirstTime;
   };
+
+  // 성찰 일지는 지도에서 열면 가장 최근에 깬 단계 질문을 보여 줌
+  const journalStageFor = (s: GameStage): GameStage =>
+    s === 'map' ? STAGE_ORDER[Math.max(0, maxStageIndex - 1)] : s;
 
   const handleStage1Complete = (profile: StudentProfile) => {
     setStudent(profile);
@@ -143,6 +154,7 @@ export default function App() {
   const resetAll = () => {
     localStorage.clear();
     setMaxStageIndex(0);
+    setJustCleared(null);
     setStage('character');
     setStudent(null);
     setConflictRecords([]);
@@ -174,7 +186,7 @@ export default function App() {
         onOpenTeacherModal={() => setIsTeacherModalOpen(true)}
         onOpenGuideModal={() => setIsGuideModalOpen(true)}
         onOpenJournalModal={() => {
-          setActiveJournalStage(stage);
+          setActiveJournalStage(journalStageFor(stage));
           setIsJournalModalOpen(true);
         }}
         onReset={handleReset}
@@ -182,7 +194,32 @@ export default function App() {
 
       {/* Lesson Step Indicator (1차시 45분 시간표 매핑) */}
       <div className="px-4 pt-5">
-        <div className="max-w-5xl mx-auto grid grid-cols-5 gap-1 p-1.5 bg-white rounded-2xl shadow-sm ring-1 ring-slate-900/[0.04]">
+        <div className="max-w-5xl mx-auto grid grid-cols-[auto_repeat(5,minmax(0,1fr))] gap-1 p-1.5 bg-white rounded-2xl shadow-sm ring-1 ring-slate-900/[0.04]">
+          <button
+            type="button"
+            onClick={() => {
+              if (student) {
+                sound.playClick();
+                setStage('map');
+              }
+            }}
+            disabled={!student}
+            className={`flex items-center gap-2 px-2.5 py-2 rounded-xl ${stage === 'map' ? 'bg-emerald-50' : 'hover:bg-slate-50'} ${
+              !student ? 'cursor-not-allowed' : ''
+            }`}
+            title="운동장 지도 보기"
+          >
+            <span
+              className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
+                stage === 'map' ? 'bg-emerald-500 text-white shadow-sm shadow-emerald-500/30' : student ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-400'
+              }`}
+            >
+              <MapIcon className="w-4 h-4" />
+            </span>
+            <span className={`hidden md:block text-[13px] font-bold ${stage === 'map' ? 'text-slate-900' : student ? 'text-slate-600' : 'text-slate-400'}`}>
+              지도
+            </span>
+          </button>
           {STAGE_STEPS.map((step, idx) => {
             const Icon = step.icon;
             const isCurrent = stage === step.id;
@@ -237,6 +274,20 @@ export default function App() {
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-6 md:px-6 md:py-10 flex flex-col">
         {stage === 'character' && <Stage1Character onComplete={handleStage1Complete} />}
 
+        {stage === 'map' && student && (
+          <StageMap
+            student={student}
+            maxStageIndex={maxStageIndex}
+            justClearedIndex={justCleared}
+            onEnterStage={(idx) => {
+              setJustCleared(null);
+              setStage(STAGE_ORDER[idx]);
+              window.scrollTo({ top: 0 });
+            }}
+            onCelebrationDone={() => setJustCleared(null)}
+          />
+        )}
+
         {stage === 'cooldown' && (
           <Stage2EmotionCooldown
             onComplete={handleStage2Complete}
@@ -273,7 +324,7 @@ export default function App() {
           type="button"
           onClick={() => {
             sound.playClick();
-            setActiveJournalStage(stage);
+            setActiveJournalStage(journalStageFor(stage));
             setIsJournalModalOpen(true);
           }}
           className="fixed bottom-5 right-5 z-30 h-12 px-5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-lg shadow-slate-900/20 flex items-center gap-2 transform active:scale-95 transition print:hidden"

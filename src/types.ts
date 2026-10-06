@@ -75,4 +75,4 @@ export type ReflectionJournal = {
   cert?: string;
 };
 
-export type GameStage = 'character' | 'cooldown' | 'scenarios' | 'imessage' | 'cert' | 'teacher_mode';
+export type GameStage = 'character' | 'cooldown' | 'scenarios' | 'imessage' | 'cert' | 'map' | 'teacher_mode';
