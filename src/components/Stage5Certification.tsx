@@ -4,6 +4,7 @@ import { sound } from '../utils/sound';
 import { Award, Printer, HeartHandshake, CheckCircle2, Copy, Download, Save, Check, FileText, BookOpen, Edit3 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { toPercent } from '../utils/scoring';
+import { SCENARIO_QUESTS } from '../data/curriculumData';
 
 interface Stage5CertificationProps {
   student: StudentProfile;
@@ -66,7 +67,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
 - 자기존중감: ${toPercent('self_esteem', scores.self_esteem)}점
 - 갈등해결 역량: ${toPercent('conflict_resolution', scores.conflict_resolution)}점
 
-[실전 4대 갈등해결 선택 기록]
+[실전 갈등해결 선택 기록]
 `;
 
     if (conflictRecords && conflictRecords.length > 0) {
@@ -77,7 +78,7 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         text += ` - 배운 점: ${rec.explanation}\n`;
       });
     } else {
-      text += `(갈등 해결 4대 시나리오 이수 완료)\n`;
+      text += `(갈등 해결 시나리오 이수 완료)\n`;
     }
 
     text += `\n[수업 단계별 성찰 일지]\n`;
@@ -350,16 +351,16 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
           </p>
         </div>
 
-        {/* 4대 갈등해결 실전 리포트 (Print & Screen) */}
+        {/* 갈등해결 실전 리포트 (Print & Screen) */}
         {conflictRecords && conflictRecords.length > 0 && (
           <div className="mt-6 pt-5 border-t border-slate-100 print:border-slate-300 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-600 print:text-slate-800 flex items-center gap-1.5">
                 <FileText className="w-3.5 h-3.5 text-indigo-600 print:text-indigo-700" />
-                4대 갈등 시나리오 선택 리포트 (학생 활동 기록)
+                갈등 시나리오 선택 리포트 (학생 활동 기록)
               </span>
               <span className="text-xs text-emerald-600 print:text-emerald-700 bg-emerald-500/10 px-2 py-0.5 rounded font-bold">
-                4/4 퀘스트 완수
+                {conflictRecords.length}/{SCENARIO_QUESTS.length} 퀘스트 완수
               </span>
             </div>
 

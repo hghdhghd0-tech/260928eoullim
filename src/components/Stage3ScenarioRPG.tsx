@@ -100,7 +100,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
       <div className="text-center space-y-2">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
           <Swords className="w-3.5 h-3.5" />
-          <span>전개 2 (15분) : 실전 갈등해결 시나리오 RPG (4대 퀘스트)</span>
+          <span>전개 2 (15분) : 실전 갈등해결 시나리오 RPG ({SCENARIO_QUESTS.length}개 퀘스트)</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-black text-slate-900">
           이런 상황, <span className="text-emerald-600">나는 어떻게</span> 말할까?
@@ -114,7 +114,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
         {/* Clear Action Steps Banner */}
         <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
-          <span>① 상황 읽기 → ② 친구 마음 읽기 → ③ 가장 지혜로운 대처법 1개 터치 → ④ [다음 퀘스트] 터치 (총 4개)</span>
+          <span>① 상황 읽기 → ② 친구 마음 읽기 → ③ 가장 지혜로운 대처법 1개 터치 → ④ [다음 퀘스트] 터치 (총 {SCENARIO_QUESTS.length}개)</span>
         </div>
       </div>
 
@@ -181,7 +181,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
                   {currentQuest.opponentName}
                 </span>
                 <span className="text-xs text-rose-600/80 font-mono">
-                  상대방 상태: 분노/흥분 상태
+                  상대가 한 말
                 </span>
               </div>
               <p className="text-sm font-semibold text-slate-900 tracking-wide">
