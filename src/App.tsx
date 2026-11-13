@@ -11,6 +11,7 @@ import { StudentGuideModal } from './components/StudentGuideModal';
 import { ReflectionJournalModal } from './components/ReflectionJournalModal';
 import { StageMap } from './components/StageMap';
 import { sound } from './utils/sound';
+import { CHECK_IN_BONUS } from './utils/scoring';
 import { User, ShieldAlert, Swords, MessageSquareShare, Award, BookOpen, Check, Map as MapIcon } from 'lucide-react';
 
 const STAGE_ORDER: GameStage[] = ['character', 'cooldown', 'scenarios', 'imessage', 'cert'];
@@ -23,7 +24,6 @@ const STAGE_STEPS: { id: GameStage; name: string; time: string; icon: React.Comp
   { id: 'cert', name: '인증 & 서약', time: '정리 7분', icon: Award }
 ];
 
-const CHECK_IN_BONUS = 16;
 
 export default function App() {
   const [stage, setStage] = useState<GameStage>('character');

@@ -28,6 +28,18 @@ export interface ScenarioChoice {
   opponentState: string;
 }
 
+export interface MindReadOption {
+  text: string;
+  isCorrect: boolean;
+}
+
+// 대처법을 고르기 전에 상대(또는 당하는 친구)의 숨은 마음을 먼저 읽어 보는 공감 활동
+export interface MindRead {
+  question: string;
+  options: MindReadOption[];
+  insight: string;
+}
+
 export interface ScenarioQuest {
   id: string;
   category: string;
@@ -38,6 +50,7 @@ export interface ScenarioQuest {
   opponentName: string;
   opponentAvatar: string;
   opponentInitialSpeech: string;
+  mindRead: MindRead;
   choices: ScenarioChoice[];
 }
 

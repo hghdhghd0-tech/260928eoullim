@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { SCENARIO_QUESTS } from '../data/curriculumData';
 import { CompetencyScore, ScenarioChoice, ConflictRecord } from '../types';
 import { sound } from '../utils/sound';
-import { Swords, CheckCircle2, XCircle, ArrowRight, ShieldCheck, HeartHandshake, Sparkles } from 'lucide-react';
+import { Swords, CheckCircle2, XCircle, ArrowRight, ShieldCheck, HeartHandshake, Sparkles, Heart } from 'lucide-react';
+import { MIND_READ_BONUS } from '../utils/scoring';
 import confetti from 'canvas-confetti';
 
 interface Stage3ScenarioRPGProps {
@@ -15,6 +16,9 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
   // 점수와 기록은 처음 고른 답으로 정함. 다른 답은 눌러서 해설만 비교해 볼 수 있음
   const [firstChoice, setFirstChoice] = useState<ScenarioChoice | null>(null);
   const [conflictRecords, setConflictRecords] = useState<ConflictRecord[]>([]);
+  // 친구 마음 읽기: 맞힌 보기 번호와 틀려서 지운 보기들. 한 번에 맞히면 공감 점수
+  const [mindPick, setMindPick] = useState<number | null>(null);
+  const [mindWrong, setMindWrong] = useState<number[]>([]);
   const [accumulatedScores, setAccumulatedScores] = useState<CompetencyScore>({
     empathy: 0,
     communication: 0,
@@ -25,6 +29,18 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
 
   const currentQuest = SCENARIO_QUESTS[questIndex];
   const isLastQuest = questIndex === SCENARIO_QUESTS.length - 1;
+
+  const mindSolved = mindPick !== null;
+
+  const handleMindRead = (idx: number, isCorrect: boolean) => {
+    if (isCorrect) {
+      setMindPick(idx);
+      sound.playSuccess();
+    } else {
+      setMindWrong((prev) => [...prev, idx]);
+      sound.playError();
+    }
+  };
 
   const handleSelectChoice = (choice: ScenarioChoice) => {
     setSelectedChoice(choice);
@@ -57,12 +73,17 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
         nextScores[key as keyof CompetencyScore] = Math.max(0, (nextScores[key as keyof CompetencyScore] || 0) + val);
       }
     });
+    if (mindWrong.length === 0) {
+      nextScores.empathy += MIND_READ_BONUS;
+    }
     setAccumulatedScores(nextScores);
 
     const updatedRecords = [...conflictRecords, currentRecord];
     setConflictRecords(updatedRecords);
     setSelectedChoice(null);
     setFirstChoice(null);
+    setMindPick(null);
+    setMindWrong([]);
 
     if (!isLastQuest) {
       setQuestIndex((prev) => prev + 1);
@@ -79,7 +100,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
       <div className="text-center space-y-2">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
           <Swords className="w-3.5 h-3.5" />
-          <span>전개 2 (15분) : 실전 갈등해결 시나리오 RPG (4대 퀘스트)</span>
+          <span>전개 2 (15분) : 실전 갈등해결 시나리오 RPG ({SCENARIO_QUESTS.length}개 퀘스트)</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-black text-slate-900">
           이런 상황, <span className="text-emerald-600">나는 어떻게</span> 말할까?
@@ -93,7 +114,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
         {/* Clear Action Steps Banner */}
         <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
-          <span>① 상황과 친구 말 읽기 → ② 가장 지혜로운 대처법 1개 터치 → ③ [다음 퀘스트] 터치 (총 4개)</span>
+          <span>① 상황 읽기 → ② 친구 마음 읽기 → ③ 가장 지혜로운 대처법 1개 터치 → ④ [다음 퀘스트] 터치 (총 {SCENARIO_QUESTS.length}개)</span>
         </div>
       </div>
 
@@ -160,7 +181,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
                   {currentQuest.opponentName}
                 </span>
                 <span className="text-xs text-rose-600/80 font-mono">
-                  상대방 상태: 분노/흥분 상태
+                  상대가 한 말
                 </span>
               </div>
               <p className="text-sm font-semibold text-slate-900 tracking-wide">
@@ -169,7 +190,54 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
             </div>
           </div>
 
+          {/* 친구 마음 읽기 (공감) */}
+          <div className="space-y-3 pt-2">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+              <Heart className="w-4 h-4 text-emerald-600" />
+              먼저 마음 읽기 · {currentQuest.mindRead.question}
+            </p>
+            <div className="grid grid-cols-1 gap-2">
+              {currentQuest.mindRead.options.map((opt, idx) => {
+                const isWrong = mindWrong.includes(idx);
+                const isPicked = mindPick === idx;
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => handleMindRead(idx, opt.isCorrect)}
+                    disabled={mindSolved || isWrong}
+                    className={`w-full min-h-12 text-left px-4 py-3 rounded-xl text-sm font-semibold transition ${
+                      isPicked
+                        ? 'bg-emerald-50 text-emerald-900 ring-2 ring-emerald-500/60 shadow-sm'
+                        : isWrong
+                        ? 'bg-slate-50 text-slate-400 line-through'
+                        : mindSolved
+                        ? 'bg-slate-50 text-slate-400'
+                        : 'bg-slate-50 hover:bg-emerald-50/60 text-slate-700 shadow-sm ring-1 ring-slate-900/[0.04]'
+                    }`}
+                  >
+                    {opt.text}
+                  </button>
+                );
+              })}
+            </div>
+            {!mindSolved && mindWrong.length > 0 && (
+              <p className="text-sm text-slate-600 bg-amber-50 rounded-xl px-4 py-3">
+                한 번 더 생각해 봐요. 말투가 아니라 <strong className="text-slate-900">그 말을 하게 만든 속마음</strong>을 찾아보세요.
+              </p>
+            )}
+            {mindSolved && (
+              <div className="text-sm text-emerald-900 bg-emerald-50 rounded-xl px-4 py-3 space-y-1">
+                <p className="font-bold">
+                  {mindWrong.length === 0 ? `마음을 읽었어요! 공감 역량 +${MIND_READ_BONUS}` : '마음을 찾았어요!'}
+                </p>
+                <p className="text-slate-700">{currentQuest.mindRead.insight}</p>
+              </div>
+            )}
+          </div>
+
           {/* Player Choice Options */}
+          {mindSolved && (
           <div className="space-y-3 pt-2">
             <p className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-amber-600" />
@@ -216,6 +284,7 @@ export const Stage3ScenarioRPG: React.FC<Stage3ScenarioRPGProps> = ({ onComplete
               })}
             </div>
           </div>
+          )}
 
           {/* Immediate RPG Reaction & Educational Feedback */}
           {firstChoice && !firstChoice.isBest && (

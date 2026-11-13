@@ -50,6 +50,15 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
     opponentName: '박찬우 (주장)',
     opponentAvatar: '😤',
     opponentInitialSpeech: '"야! 그걸 왜 놓쳐? 다 이긴 경기를 너 때문에 졌잖아!"',
+    mindRead: {
+      question: '소리치는 찬우의 말 밑에는 어떤 마음이 숨어 있을까요?',
+      options: [
+        { text: '나를 싫어해서 친구들 앞에서 망신 주고 싶은 마음', isCorrect: false },
+        { text: '결승에서 꼭 이기고 싶었는데 져서 너무 아쉽고 속상한 마음', isCorrect: true },
+        { text: '아무렇지도 않은데 그냥 해 보는 말', isCorrect: false }
+      ],
+      insight: '큰소리 밑에는 이기고 싶었던 만큼 큰 아쉬움이 숨어 있어요. 마음을 알아준다고 해서 막말까지 참으라는 뜻은 아니에요. 마음을 알면 맞받아치지 않고 말할 수 있어요.'
+    },
     choices: [
       {
         id: 'c1',
@@ -63,7 +72,7 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
       {
         id: 'c2',
         text: '6초간 깊게 숨을 고른 뒤: "나도 결정적인 기회를 놓쳐서 진짜 속상하고 팀에 미안해. 그런데 소리 지르며 몰아붙이니까 나도 당황스러워. 다음엔 패스 타이밍 같이 맞춰 보자."',
-        scoreBonus: { self_regulation: 25, communication: 25, conflict_resolution: 20 },
+        scoreBonus: { self_regulation: 25, communication: 25, conflict_resolution: 20, empathy: 10 },
         reaction: '찬우가 멈칫하더니 한숨을 쉬며 말합니다. "...나도 너무 흥분해서 소리 질렀다. 아쉬워서 그랬어."',
         isBest: true,
         explanation: '내 아쉬움과 미안함을 솔직히 인정하고, 상대의 태도에 대해서는 비난 대신 내 감정으로 말했습니다. 사과와 부탁을 함께 담으면 상대의 화도 가라앉습니다.',
@@ -90,6 +99,15 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
     opponentName: '김민석 (게임 친구)',
     opponentAvatar: '😡',
     opponentInitialSpeech: '"아 진짜 너 때문에 또 졌네. 게임 접어라 좀."',
+    mindRead: {
+      question: '민석이는 왜 이런 말을 쏟아낼까요?',
+      options: [
+        { text: '내 게임 실력을 진심으로 걱정해서 해 주는 조언', isCorrect: false },
+        { text: '원래 나쁜 아이라서 그런 것', isCorrect: false },
+        { text: '연달아 져서 분하고 짜증 난 마음을 엉뚱하게 나에게 쏟는 중', isCorrect: true }
+      ],
+      insight: '상대가 왜 화났는지 알아차리는 것과 선 넘는 말을 받아 주는 것은 달라요. 마음은 이해하되, 넘으면 안 되는 선은 분명하게 지켜요.'
+    },
     choices: [
       {
         id: 'g1',
@@ -130,6 +148,15 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
     opponentName: '이진호 (모둠원)',
     opponentAvatar: '😒',
     opponentInitialSpeech: '"왜 그렇게 예민해~ 대충 인터넷에서 찾아 붙여. 너 금방 하잖아."',
+    mindRead: {
+      question: '"네가 다 해라"며 폰만 보는 진호의 속마음은 무엇에 가까울까요?',
+      options: [
+        { text: '학원 때문에 바쁘고, 뭘 해야 할지 몰라 부담스러워 피하고 싶은 마음', isCorrect: true },
+        { text: '모둠 친구들을 일부러 골탕 먹이려는 마음', isCorrect: false },
+        { text: '발표 점수 같은 건 전혀 상관없다는 마음', isCorrect: false }
+      ],
+      insight: '피하는 행동 뒤에는 부담감이 숨어 있을 때가 많아요. 그래서 "사진 2장만 같이 찾자"처럼 작은 일 하나를 콕 집어 부탁하면 움직이기 쉬워져요.'
+    },
     choices: [
       {
         id: 'w1',
@@ -170,6 +197,15 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
     opponentName: '최동수 (같은 반)',
     opponentAvatar: '😏',
     opponentInitialSpeech: '"왜 그래~ 반가워서 한 대 친 거지. 장난인데 정색하기는."',
+    mindRead: {
+      question: '"장난"이라며 툭툭 맞는 친구는 속으로 어떤 마음일까요?',
+      options: [
+        { text: '다 같이 웃으니까 괜찮은 마음', isCorrect: false },
+        { text: '별로 신경 쓰지 않는 마음', isCorrect: false },
+        { text: '겉으로는 웃어넘기지만 창피하고 불쾌해서 학교 오기가 싫어지는 마음', isCorrect: true }
+      ],
+      insight: '장난인지 아닌지는 당하는 사람이 정해요. 웃고 있어도 속으로는 힘들 수 있어요. 옆에서 보는 친구도 이 마음을 알아차리면 "그만해"라고 말하거나 선생님께 알릴 수 있어요.'
+    },
     choices: [
       {
         id: 'r1',
@@ -197,6 +233,104 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
         isBest: false,
         explanation: '피하고 싶은 마음은 잘못이 아닙니다. 다만 혼자 견디면 괴롭힘은 멈추지 않아요. 말하기 어렵다면 친구 한 명이나 선생님, 부모님께 알리는 것부터 시작하면 됩니다. 혼자 견디지 않는 것이 가장 중요합니다.',
         opponentState: '🌧️ 혼자 견디는 중'
+      }
+    ]
+  },
+  {
+    id: 'quest_teampick',
+    category: '체육 시간',
+    subjectTag: '체육 / 창체',
+    title: '퀘스트 5: 팀 나누기, 마지막까지 남은 친구',
+    situation: '체육 시간 피구 팀을 주장 두 명이 한 명씩 뽑는다. 운동을 잘 못하는 태윤이가 마지막까지 남자, 우리 팀 주장 현수가 큰 소리로 말한다.',
+    contextDesc: '나는 이미 뽑혀서 현수와 같은 팀입니다. 어떻게 할까요?',
+    opponentName: '정현수 (우리 팀 주장)',
+    opponentAvatar: '🙄',
+    opponentInitialSpeech: '"아~ 태윤이는 너희 팀 가져가. 우리 팀은 지기 싫거든."',
+    mindRead: {
+      question: '끝까지 남은 태윤이는 지금 어떤 마음일까요?',
+      options: [
+        { text: '체육을 원래 싫어하니까 아무렇지 않은 마음', isCorrect: false },
+        { text: '모두가 보는 앞에서 짐 취급을 받아 창피하고, 체육 시간이 싫어지는 마음', isCorrect: true },
+        { text: '뽑히지 않아서 쉬게 되니 오히려 편한 마음', isCorrect: false }
+      ],
+      insight: '모두 앞에서 "필요 없는 사람"처럼 취급받으면 경기보다 그 순간이 더 오래 기억에 남아요. 이런 일이 반복되면 따돌림이 시작될 수 있어요.'
+    },
+    choices: [
+      {
+        id: 't1',
+        text: '같이 킥킥 웃으며 "태윤이 오면 우리 팀 지는 거 확정이지" 하고 맞장구친다.',
+        scoreBonus: { empathy: -10, conflict_resolution: -10 },
+        reaction: '태윤이는 고개를 숙인 채 경기 내내 공을 피하기만 했고, 다음 체육 시간에는 몸이 아프다며 보건실에 갔습니다.',
+        isBest: false,
+        explanation: '함께 웃는 사람도 상처를 키우는 사람이 됩니다. 장난처럼 던진 한마디가 친구에게는 "너는 필요 없어"라는 말로 들려요.',
+        opponentState: '😞 소외가 더 깊어짐'
+      },
+      {
+        id: 't2',
+        text: '"현수야, 태윤이 다 들리잖아. 우리 팀으로 와, 태윤아! 수비 같이 하자." 하고 먼저 부른다.',
+        scoreBonus: { empathy: 25, communication: 15, conflict_resolution: 20 },
+        reaction: '태윤이가 놀란 얼굴로 다가옵니다. 현수도 머쓱하게 "그래, 같이 하자"라고 말했고, 태윤이는 경기에서 공을 한 번 잡아 냈습니다.',
+        isBest: true,
+        explanation: '현수를 몰아세우지 않으면서 태윤이가 들었다는 사실을 짚고, 먼저 손을 내밀었습니다. 한 사람이 먼저 부르면 분위기가 바뀝니다. 팀 나누기 방식이 계속 문제라면 선생님께 다른 방법을 건의할 수도 있어요.',
+        opponentState: '🤝 모두 함께하는 경기'
+      },
+      {
+        id: 't3',
+        text: '불편하지만 내 일이 아니니까 모른 척하고 가만히 있는다.',
+        scoreBonus: { empathy: -5 },
+        reaction: '아무도 말하지 않자 현수의 말이 당연한 것처럼 지나갔습니다. 태윤이는 혼자 상대 팀 맨 뒤에 섰습니다.',
+        isBest: false,
+        explanation: '가만히 있는 것도 하나의 선택이 됩니다. 직접 나서기 어렵다면 경기 뒤에 태윤이에게 "아까 기분 나빴지?" 하고 말 걸어 주는 것만으로도 큰 힘이 돼요.',
+        opponentState: '😶 아무도 말하지 않음'
+      }
+    ]
+  },
+  {
+    id: 'quest_photo',
+    category: '단톡방 & SNS',
+    subjectTag: '정보 / 도덕',
+    title: '퀘스트 6: 단톡방에 올라온 친구의 우스꽝스러운 사진',
+    situation: '반 단톡방에 누군가 체육 시간에 넘어지는 민준이의 사진을 올렸다. 표정이 우스꽝스럽게 찍혀서 "ㅋㅋㅋ" 댓글이 줄줄이 달리고, 사진을 짤로 만들자는 말까지 나온다.',
+    contextDesc: '민준이도 이 단톡방에 있습니다. 나는 어떻게 할까요?',
+    opponentName: '단톡방 친구들',
+    opponentAvatar: '📱',
+    opponentInitialSpeech: '"ㅋㅋㅋ 이거 짤로 만들어서 다른 반에도 보내자"',
+    mindRead: {
+      question: '이 단톡방을 보고 있는 민준이는 어떤 마음일까요?',
+      options: [
+        { text: '친구들이 웃어 주니 인기가 생긴 것 같아 기쁜 마음', isCorrect: false },
+        { text: '그냥 사진일 뿐이라 별생각 없는 마음', isCorrect: false },
+        { text: '내 사진이 어디까지 퍼질지 몰라 무섭고, 내일 학교 가기가 두려운 마음', isCorrect: true }
+      ],
+      insight: '온라인에 퍼진 사진은 내가 지울 수 없어서 더 무서워요. 본인 허락 없이 사진을 올리거나 퍼뜨리는 것은 사이버폭력이 될 수 있어요.'
+    },
+    choices: [
+      {
+        id: 'p1',
+        text: '재미있으니 나도 "ㅋㅋㅋ"를 달고, 다른 반 친구에게 사진을 보낸다.',
+        scoreBonus: { empathy: -15, self_regulation: -10 },
+        reaction: '사진이 학년 전체로 퍼졌습니다. 민준이 부모님이 학교에 연락했고, 사진을 퍼뜨린 학생들 모두 학교폭력 조사를 받게 되었습니다.',
+        isBest: false,
+        explanation: '한 번 보낸 사진은 되돌릴 수 없습니다. 처음 올린 사람만이 아니라, 퍼뜨린 사람도 사이버폭력에 책임이 있어요.',
+        opponentState: '🚨 사이버폭력으로 번짐'
+      },
+      {
+        id: 'p2',
+        text: '단톡방은 그냥 나가 버리고, 아무에게도 말하지 않는다.',
+        scoreBonus: { empathy: -5 },
+        reaction: '나는 편해졌지만, 사진은 계속 퍼졌고 민준이는 혼자 그 상황을 견뎌야 했습니다.',
+        isBest: false,
+        explanation: '나만 빠지면 상황은 그대로예요. 직접 말하기 어렵다면 선생님께 조용히 알리는 것만으로도 친구를 지킬 수 있어요.',
+        opponentState: '🌧️ 혼자 남은 친구'
+      },
+      {
+        id: 'p3',
+        text: '"이거 민준이도 보는 방이야. 본인 허락 없이 올린 사진은 지우자. 짤로 만드는 건 진짜 아닌 것 같아." 라고 쓰고, 그래도 계속되면 선생님께 알린다.',
+        scoreBonus: { empathy: 25, communication: 20, self_esteem: 10 },
+        reaction: '잠깐 조용해지더니 사진을 올린 친구가 "미안, 지울게"라고 하고 사진을 지웠습니다. 민준이가 개인 메시지로 "고마워"라고 보냈습니다.',
+        isBest: true,
+        explanation: '웃음에 휩쓸리지 않고 당하는 친구 입장에서 한마디를 했습니다. 지워지지 않거나 계속 퍼지면 선생님께 알리는 것이 친구를 지키는 방법이에요. 이것도 고자질이 아닙니다.',
+        opponentState: '🛡️ 사진 삭제와 사과'
       }
     ]
   }
@@ -290,8 +424,8 @@ export const LESSON_PLAN = {
     },
     {
       step: '전개 2 (15분)',
-      name: '실전 갈등해결 퀘스트 (4대 상황)',
-      activity: '중1이 가장 자주 겪는 4대 상황(경기 중 실수, 온라인에서의 선 넘는 말, 모둠과제 무임승차, 장난을 가장한 괴롭힘)을 체험하고 가장 나은 해결책 선택.',
+      name: '실전 갈등해결 퀘스트 (6가지 상황)',
+      activity: '중1이 가장 자주 겪는 6가지 상황(경기 중 실수, 온라인에서의 선 넘는 말, 모둠과제 무임승차, 장난을 가장한 괴롭힘, 체육 팀 나누기에서의 소외, 단톡방 사진 퍼뜨리기)마다 먼저 상대(또는 당하는 친구)의 숨은 마음을 읽고(공감), 그다음 가장 나은 해결책 선택.',
       teacherTip: '"맞받아치기"와 "단톡방 뒷담화"의 실제 결과를 게임 피드백으로 체감하게 하고, 퀘스트 4에서는 "멈추지 않는 괴롭힘을 어른에게 알리는 것은 고자질이 아니라 나를 지키는 일"임을 반드시 짚어 주기'
     },
     {
