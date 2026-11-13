@@ -242,7 +242,7 @@ export const Stage4IMessageCombo: React.FC<Stage4IMessageComboProps> = ({ onComp
                 className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-600 disabled:bg-slate-100 disabled:text-slate-400 text-white font-extrabold text-sm shadow-lg shadow-slate-900/5 flex items-center justify-center gap-2 transform active:scale-98 transition"
               >
                 <Zap className="w-4 h-4 text-amber-700" />
-                <span>내가 완성한 나-전달법</span>
+                <span>카드 3장 맞추기</span>
               </button>
             </div>
           </div>
