@@ -3,6 +3,7 @@ import { CompetencyScore, StudentProfile, ConflictRecord, ReflectionJournal } fr
 import { sound } from '../utils/sound';
 import { Award, Printer, HeartHandshake, CheckCircle2, Copy, Download, Save, Check, FileText, BookOpen, Edit3 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { toPercent } from '../utils/scoring';
 
 interface Stage5CertificationProps {
   student: StudentProfile;
@@ -58,12 +59,12 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
 학생: 중학교 ${grade}학년 ${classNum}반 ${student.studentNumber}번 ${student.name}
 수업 전 감정: ${student.initialEmotion} (에너지: ${student.initialEnergy}/5)
 
-[어울림 5대 역량 점수]
-- 공감 역량: ${scores.empathy}점
-- 의사소통 역량: ${scores.communication}점
-- 감정조절 역량: ${scores.self_regulation}점
-- 자기존중감: ${scores.self_esteem}점
-- 갈등해결 역량: ${scores.conflict_resolution}점
+[어울림 5대 역량 달성도] (각 역량 100점 만점)
+- 공감 역량: ${toPercent('empathy', scores.empathy)}점
+- 의사소통 역량: ${toPercent('communication', scores.communication)}점
+- 감정조절 역량: ${toPercent('self_regulation', scores.self_regulation)}점
+- 자기존중감: ${toPercent('self_esteem', scores.self_esteem)}점
+- 갈등해결 역량: ${toPercent('conflict_resolution', scores.conflict_resolution)}점
 
 [실전 4대 갈등해결 선택 기록]
 `;
@@ -138,11 +139,11 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
   // Radar chart points calculation
   // Center: 120, 120. Radius: 85
   const competencies = [
-    { key: 'empathy', name: '공감', score: scores.empathy, max: 80, angle: -90 },
-    { key: 'communication', name: '의사소통', score: scores.communication, max: 80, angle: -18 },
-    { key: 'self_regulation', name: '감정조절', score: scores.self_regulation, max: 80, angle: 54 },
-    { key: 'self_esteem', name: '자기존중', score: scores.self_esteem, max: 80, angle: 126 },
-    { key: 'conflict_resolution', name: '갈등해결', score: scores.conflict_resolution, max: 80, angle: 198 }
+    { key: 'empathy', name: '공감', score: toPercent('empathy', scores.empathy), max: 100, angle: -90 },
+    { key: 'communication', name: '의사소통', score: toPercent('communication', scores.communication), max: 100, angle: -18 },
+    { key: 'self_regulation', name: '감정조절', score: toPercent('self_regulation', scores.self_regulation), max: 100, angle: 54 },
+    { key: 'self_esteem', name: '자기존중', score: toPercent('self_esteem', scores.self_esteem), max: 100, angle: 126 },
+    { key: 'conflict_resolution', name: '갈등해결', score: toPercent('conflict_resolution', scores.conflict_resolution), max: 100, angle: 198 }
   ];
 
   const center = 120;

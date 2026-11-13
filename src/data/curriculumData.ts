@@ -50,6 +50,15 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
     opponentName: '박찬우 (주장)',
     opponentAvatar: '😤',
     opponentInitialSpeech: '"야! 그걸 왜 놓쳐? 다 이긴 경기를 너 때문에 졌잖아!"',
+    mindRead: {
+      question: '소리치는 찬우의 말 밑에는 어떤 마음이 숨어 있을까요?',
+      options: [
+        { text: '나를 싫어해서 친구들 앞에서 망신 주고 싶은 마음', isCorrect: false },
+        { text: '결승에서 꼭 이기고 싶었는데 져서 너무 아쉽고 속상한 마음', isCorrect: true },
+        { text: '아무렇지도 않은데 그냥 해 보는 말', isCorrect: false }
+      ],
+      insight: '큰소리 밑에는 이기고 싶었던 만큼 큰 아쉬움이 숨어 있어요. 마음을 알아준다고 해서 막말까지 참으라는 뜻은 아니에요. 마음을 알면 맞받아치지 않고 말할 수 있어요.'
+    },
     choices: [
       {
         id: 'c1',
@@ -63,7 +72,7 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
       {
         id: 'c2',
         text: '6초간 깊게 숨을 고른 뒤: "나도 결정적인 기회를 놓쳐서 진짜 속상하고 팀에 미안해. 그런데 소리 지르며 몰아붙이니까 나도 당황스러워. 다음엔 패스 타이밍 같이 맞춰 보자."',
-        scoreBonus: { self_regulation: 25, communication: 25, conflict_resolution: 20 },
+        scoreBonus: { self_regulation: 25, communication: 25, conflict_resolution: 20, empathy: 10 },
         reaction: '찬우가 멈칫하더니 한숨을 쉬며 말합니다. "...나도 너무 흥분해서 소리 질렀다. 아쉬워서 그랬어."',
         isBest: true,
         explanation: '내 아쉬움과 미안함을 솔직히 인정하고, 상대의 태도에 대해서는 비난 대신 내 감정으로 말했습니다. 사과와 부탁을 함께 담으면 상대의 화도 가라앉습니다.',
@@ -90,6 +99,15 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
     opponentName: '김민석 (게임 친구)',
     opponentAvatar: '😡',
     opponentInitialSpeech: '"아 진짜 너 때문에 또 졌네. 게임 접어라 좀."',
+    mindRead: {
+      question: '민석이는 왜 이런 말을 쏟아낼까요?',
+      options: [
+        { text: '내 게임 실력을 진심으로 걱정해서 해 주는 조언', isCorrect: false },
+        { text: '원래 나쁜 아이라서 그런 것', isCorrect: false },
+        { text: '연달아 져서 분하고 짜증 난 마음을 엉뚱하게 나에게 쏟는 중', isCorrect: true }
+      ],
+      insight: '상대가 왜 화났는지 알아차리는 것과 선 넘는 말을 받아 주는 것은 달라요. 마음은 이해하되, 넘으면 안 되는 선은 분명하게 지켜요.'
+    },
     choices: [
       {
         id: 'g1',
@@ -130,6 +148,15 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
     opponentName: '이진호 (모둠원)',
     opponentAvatar: '😒',
     opponentInitialSpeech: '"왜 그렇게 예민해~ 대충 인터넷에서 찾아 붙여. 너 금방 하잖아."',
+    mindRead: {
+      question: '"네가 다 해라"며 폰만 보는 진호의 속마음은 무엇에 가까울까요?',
+      options: [
+        { text: '학원 때문에 바쁘고, 뭘 해야 할지 몰라 부담스러워 피하고 싶은 마음', isCorrect: true },
+        { text: '모둠 친구들을 일부러 골탕 먹이려는 마음', isCorrect: false },
+        { text: '발표 점수 같은 건 전혀 상관없다는 마음', isCorrect: false }
+      ],
+      insight: '피하는 행동 뒤에는 부담감이 숨어 있을 때가 많아요. 그래서 "사진 2장만 같이 찾자"처럼 작은 일 하나를 콕 집어 부탁하면 움직이기 쉬워져요.'
+    },
     choices: [
       {
         id: 'w1',
@@ -170,6 +197,15 @@ export const SCENARIO_QUESTS: ScenarioQuest[] = [
     opponentName: '최동수 (같은 반)',
     opponentAvatar: '😏',
     opponentInitialSpeech: '"왜 그래~ 반가워서 한 대 친 거지. 장난인데 정색하기는."',
+    mindRead: {
+      question: '"장난"이라며 툭툭 맞는 친구는 속으로 어떤 마음일까요?',
+      options: [
+        { text: '다 같이 웃으니까 괜찮은 마음', isCorrect: false },
+        { text: '별로 신경 쓰지 않는 마음', isCorrect: false },
+        { text: '겉으로는 웃어넘기지만 창피하고 불쾌해서 학교 오기가 싫어지는 마음', isCorrect: true }
+      ],
+      insight: '장난인지 아닌지는 당하는 사람이 정해요. 웃고 있어도 속으로는 힘들 수 있어요. 옆에서 보는 친구도 이 마음을 알아차리면 "그만해"라고 말하거나 선생님께 알릴 수 있어요.'
+    },
     choices: [
       {
         id: 'r1',
@@ -291,7 +327,7 @@ export const LESSON_PLAN = {
     {
       step: '전개 2 (15분)',
       name: '실전 갈등해결 퀘스트 (4대 상황)',
-      activity: '중1이 가장 자주 겪는 4대 상황(경기 중 실수, 온라인에서의 선 넘는 말, 모둠과제 무임승차, 장난을 가장한 괴롭힘)을 체험하고 가장 나은 해결책 선택.',
+      activity: '중1이 가장 자주 겪는 4대 상황(경기 중 실수, 온라인에서의 선 넘는 말, 모둠과제 무임승차, 장난을 가장한 괴롭힘)마다 먼저 상대(또는 당하는 친구)의 숨은 마음을 읽고(공감), 그다음 가장 나은 해결책 선택.',
       teacherTip: '"맞받아치기"와 "단톡방 뒷담화"의 실제 결과를 게임 피드백으로 체감하게 하고, 퀘스트 4에서는 "멈추지 않는 괴롭힘을 어른에게 알리는 것은 고자질이 아니라 나를 지키는 일"임을 반드시 짚어 주기'
     },
     {

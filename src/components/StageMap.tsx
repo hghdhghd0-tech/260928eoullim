@@ -33,7 +33,7 @@ const LEAD_IN = 'M-20,548 C40,530 70,512 110,500';
 export const MAP_STAGES = [
   { title: '마음 체크인', time: '도입 5분', sign: { x: 140, y: 538, place: 'below' }, badge: '마음 체크 배지', skill: '자기존중감', icon: Heart },
   { title: '6초 쿨다운 존', time: '전개 10분', sign: { x: 330, y: 476, place: 'below' }, badge: '쿨다운 배지', skill: '감정조절', icon: Wind },
-  { title: '갈등 해결 경기장', time: '전개 15분', sign: { x: 548, y: 538, place: 'below' }, badge: '갈등 해결 배지', skill: '갈등해결', icon: Handshake },
+  { title: '갈등 해결 경기장', time: '전개 15분', sign: { x: 548, y: 538, place: 'below' }, badge: '갈등 해결 배지', skill: '공감·갈등해결', icon: Handshake },
   { title: '존중 카드 공방', time: '전개 8분', sign: { x: 725, y: 390, place: 'below' }, badge: '존중 대화 배지', skill: '의사소통', icon: MessageCircle },
   { title: '어울림 시상대', time: '정리 7분', sign: { x: 826, y: 180, place: 'left' }, badge: '', skill: '', icon: Trophy }
 ];
