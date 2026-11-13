@@ -179,17 +179,17 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         <p className="text-sm text-slate-600 max-w-xl mx-auto">
           오늘 45분 동안 배운 공감, 감정조절, 나-전달법, 갈등해결 역량을 바탕으로
           <br />
-          우리 반 24명이 서로를 지켜주는 멋진 교실을 만들어가요!
+          우리 반 모두가 서로를 지켜 주는 멋진 교실을 만들어가요!
         </p>
 
         {/* Clear Action Steps Banner */}
         <div className="bg-white shadow-sm ring-1 ring-slate-900/[0.04] rounded-2xl px-4 py-3 max-w-2xl mx-auto text-sm text-slate-600 flex items-center justify-center gap-2.5">
           <span className="shrink-0 font-bold text-white bg-emerald-500 px-2.5 py-1 rounded-full">지금 할 일</span>
           <span className="flex flex-wrap justify-center gap-x-1.5 text-left">
-            <span className="whitespace-nowrap">① 오각형 차트 확인 →</span>
-            <span className="whitespace-nowrap">② '나의 약속' 1문장 적기 →</span>
-            <span className="whitespace-nowrap">③ 맨 아래 [결과 텍스트 전체 복사] →</span>
-            <span className="whitespace-nowrap">④ 선생님이 알려 준 패들렛·클래스룸에 붙여넣기</span>
+            <span className="sm:whitespace-nowrap">① 오각형 차트 확인 →</span>
+            <span className="sm:whitespace-nowrap">② '나의 약속' 1문장 적기 →</span>
+            <span className="sm:whitespace-nowrap">③ 맨 아래 [결과 텍스트 전체 복사] →</span>
+            <span className="sm:whitespace-nowrap">④ 선생님이 알려 준 패들렛·클래스룸에 붙여넣기</span>
           </span>
         </div>
       </div>
@@ -221,15 +221,15 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 my-6 items-center">
           {/* Left: Student Profile & Badge */}
           <div className="md:col-span-5 space-y-4 text-center md:text-left">
-            <div className="inline-flex items-center gap-3.5 p-3.5 bg-slate-50/80 print:bg-slate-100 rounded-2xl border border-slate-100 print:border-slate-300 w-full">
+            <div className="flex items-center gap-3.5 p-3.5 bg-slate-50/80 print:bg-slate-100 rounded-2xl border border-slate-100 print:border-slate-300 w-full min-w-0">
               <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center text-3xl shrink-0">
                 🏅
               </div>
-              <div className="text-left">
+              <div className="text-left min-w-0">
                 <span className="text-xs font-bold text-amber-600 print:text-amber-700 block">
                   중학교 {student.grade || 1}학년 {student.classNum || 1}반 {student.studentNumber}번
                 </span>
-                <h3 className="text-xl font-black text-slate-900 print:text-black">
+                <h3 className="text-xl font-black text-slate-900 print:text-black break-keep [overflow-wrap:anywhere]">
                   {student.name}
                 </h3>
                 <span className="text-xs text-indigo-700 print:text-indigo-800 font-semibold flex items-center gap-1">
@@ -251,8 +251,8 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
             <span className="text-xs font-bold text-slate-500 print:text-slate-600 mb-2">
               어울림 5대 핵심 역량 달성도
             </span>
-            <div className="relative w-60 h-60">
-              <svg viewBox="0 0 240 240" className="w-full h-full overflow-visible">
+            <div className="relative w-full max-w-[320px] aspect-[4/3]">
+              <svg viewBox="-40 -6 320 252" className="w-full h-full">
                 {/* Background Concentric Circles */}
                 {[0.25, 0.5, 0.75, 1.0].map((level, i) => (
                   <circle
@@ -300,19 +300,27 @@ export const Stage5Certification: React.FC<Stage5CertificationProps> = ({
                   const ratio = Math.max(0.2, c.score / c.max);
                   const pt = getCoordinates(c.angle, ratio);
                   const [px, py] = pt.split(',');
-                  const labelPt = getCoordinates(c.angle, 1.25);
-                  const [lx, ly] = labelPt.split(',');
+                  // 글자는 꼭짓점 바깥쪽으로 띄우고, 좌우에 있는 글자는 바깥쪽으로 정렬해 점과 겹치지 않게 함
+                  const rad = (c.angle * Math.PI) / 180;
+                  const cos = Math.cos(rad);
+                  const sin = Math.sin(rad);
+                  const lr = radius + 14;
+                  const lx = center + lr * cos;
+                  const ly = center + lr * sin;
+                  const anchor = cos > 0.3 ? 'start' : cos < -0.3 ? 'end' : 'middle';
+                  // 위쪽 글자는 위로, 아래쪽 글자는 아래로 두 줄(이름·점수)을 쌓음
+                  const firstDy = sin < -0.5 ? -14 : sin > 0.5 ? 6 : -4;
                   return (
                     <g key={c.key}>
                       <circle cx={px} cy={py} r="4" fill="#059669" className="print:fill-indigo-700" />
                       <text
                         x={lx}
                         y={ly}
-                        textAnchor="middle"
-                        dominantBaseline="central"
-                        className="text-[10px] font-bold fill-slate-700 print:fill-slate-800"
+                        textAnchor={anchor}
+                        className="text-[11px] font-bold fill-slate-700 print:fill-slate-800"
                       >
-                        {c.name} ({c.score})
+                        <tspan x={lx} dy={firstDy}>{c.name}</tspan>
+                        <tspan x={lx} dy={13} className="fill-emerald-700 print:fill-slate-800">{c.score}점</tspan>
                       </text>
                     </g>
                   );
